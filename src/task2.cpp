@@ -19,22 +19,29 @@ unsigned long hashDJB2(const std::string& str) {
 } 
 
 int main() {
-    cout << isCustomURL("david") << endl;
     string sort[200];
-    hash<string> myhash1;
-    hash<string> myhash2;
-    string hashing1;
+    hash<string> myhash;
+    string hashing;
+    string choice;
+    int place1;
+    int place2;
 
 
-    
-        string hashing;
-        string choice;
+    while (true) {
         cin >> choice;
         getline(cin, hashing);
-        int place = myhash1(hashing)%200;
-        sort[place]=hashing;  
-        cout << myhash1(hashing) << endl;
-        cout << hashDJB2(hashing) << endl;
+        place1 = myhash(hashing)%200;
+        place2 = hashDJB2(hashing)%200;
+        if (choice == "1"){
+            sort[place1]=hashing; 
+        } else {
+            if (choice == "2") {
+                
+            }
+        }
+         
+        
+    }
         
 
 
