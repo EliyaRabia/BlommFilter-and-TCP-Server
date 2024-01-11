@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 project("ex1") # Replace “MyCalc” with your repo name
+
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -13,12 +14,12 @@ https://github.com/google/googletest/archive/03597a01ee50ed
 
 enable_testing()
 set(SOURCE_FILES
-    src/calc.cpp # this is where the code we want to test
+src/task3.cpp # this is where the code we want to test
 )
 
 set(TEST_FILES
-    tests/test_main.cpp # this is the main for tests
-    tests/calc_test.cpp # this file contain the tests
+tests/test_main.cpp # this is the main for tests
+tests/url_test.cpp # this file contain the tests
 )
 
 add_executable(CalcTests ${TEST_FILES})
