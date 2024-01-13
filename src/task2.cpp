@@ -78,7 +78,7 @@ int main() {
             // add url to link list.
 
         } else {
-            if (choice == "2") {
+            if (choice == 2) {
                 //need to check the url exists.
                 if (first_input_size == 2 ) {
                     // we need to check only in one place.
