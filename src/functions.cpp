@@ -22,6 +22,5 @@ bool firstInputCheck(const string& input) {
 }
 bool isCustomURL(string input) {
     // Check if the input starts with "www." and ends with ".com"
-    return (input.compare(0, 4, "www.") == 0 && input.length() > 8 &&
-            input.compare(input.length() - 4, 4, ".com") == 0);
+    return (input.compare(0, 4, "www.") == 0);
 }

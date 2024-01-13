@@ -10,5 +10,5 @@ TEST(UrlTest, basicTest) {
 EXPECT_EQ(isCustomURL("aa"), 0);
 }
 TEST(UrlTest2, basicTest2) {
-EXPECT_EQ(isCustomURL("www.work.com"), 1);
+EXPECT_EQ(isCustomURL("www.example.com1"), 1);
 }
