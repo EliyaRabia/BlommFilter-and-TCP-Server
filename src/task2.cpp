@@ -8,31 +8,32 @@ bool isCustomURL(string input) {
             input.compare(input.length() - 4, 4, ".com") == 0);
 }
 
-int main() {
-    cout << isCustomURL("david") << endl;
-    string sort[200];
-    hash<string> myhash1;
-    hash<string> myhash2;
-    string hashing1;
+// int main() {
+//     string sort[200];
+//     hash<string> myhash1;
+//     hash<string> myhash2;
+//     string hashing1;
 
 
     
-        string hashing;
-        string choice;
-        cin >> choice;
-        getline(cin, hashing);
-        int place = myhash1(hashing)%200;
-        sort[place]=hashing;
+//         string hashing;
+//         string choice;
+//         cin >> choice;
+//         getline(cin, hashing);
+//         int place = myhash1(hashing)%200;
+//         sort[place]=hashing;
+//         cout << myhash1(hashing) << endl;
+//         // cout << myhash1(myhash1(hashing)) << endl;
 
-        // as you saw, if you inputted a line for the first input,
-	    // then it took the first word as the first input,
-	    // and the rest of the line as the sccond input
-	    // to fix this, we will clear the input buffer
-	    cin.clear();
+//         // as you saw, if you inputted a line for the first input,
+// 	    // then it took the first word as the first input,
+// 	    // and the rest of the line as the sccond input
+// 	    // to fix this, we will clear the input buffer
+// 	    cin.clear();
     
 
    
 
 
-	return 0;
-}
+//	return 0;
+//}
