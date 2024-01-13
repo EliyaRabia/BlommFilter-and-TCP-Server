@@ -23,8 +23,7 @@ int main() {
     hash<string> myhash;
     string hashing;
     string choice;
-    int place1;
-    int place2;
+    int place;
 
 
     while (true) {
