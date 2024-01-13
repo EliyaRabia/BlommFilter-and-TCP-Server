@@ -19,19 +19,15 @@ int firstInputCheck(const string& input) {
                 
                 inNumber = true;
             }
-            if(countNumbers==2){ //maybe we will need to change it to AND 3 after we realize what to do
-                if(isCorrectdigit==false){
-                    if(c=='2'||c=='1'){
+            if(countNumbers==2||countNumbers==3){ 
+                if(isCorrectdigit==false && (c=='2'||c=='1')){
                     isCorrectdigit=true;
-                    }
-                    else{
-                        return 0;
-                    }
+                    
                 }
+
                 else{
                     return 0;
-                }
-                
+                } 
             }
         } 
         else {
