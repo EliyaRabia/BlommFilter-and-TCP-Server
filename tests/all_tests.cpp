@@ -10,7 +10,7 @@ TEST(keletTest2, passedTest) {
 EXPECT_EQ(firstInputCheck("234  2"), 2);
 }
 TEST(keletTest3, passedTest) {
-EXPECT_EQ(firstInputCheck("234  2 11"), 3);
+EXPECT_EQ(firstInputCheck("234  2 1"), 3);
 }
 
 TEST(UrlTest, basicTest) {
