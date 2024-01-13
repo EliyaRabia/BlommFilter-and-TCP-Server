@@ -58,7 +58,7 @@ int main() {
         getline(cin, user_URL);
         //need to check the input
 
-        if (choice == "1"){
+        if (choice == 1){
             if (first_input_size == 2) {
                 //1 or 2 send by hash_times!!
                 place1 = myhash(user_URL)%array_size;
