@@ -18,6 +18,3 @@ bool firstInputCheck(const std::string& input) {
 
     return countNumbers == 2 || countNumbers == 3;
 } 
-int main(){
-    std::cout << firstInputCheck("aaa24 25") << std::endl;
-}
