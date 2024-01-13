@@ -8,6 +8,8 @@ bool isCustomURL(string input) {
             input.compare(input.length() - 4, 4, ".com") == 0);
 }
 
+
+
 // int main() {
 //     string sort[200];
 //     hash<string> myhash1;
