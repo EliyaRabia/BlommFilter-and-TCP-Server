@@ -26,3 +26,7 @@ EXPECT_EQ(checkStringFun("ofek"), 0);
 TEST(KeletTest5, falseTest2) {
 EXPECT_EQ(checkStringFun("2 www.example.com1"), 1);
 } 
+
+TEST(mainTest, passedTest) {
+EXPECT_EQ(checkStringFun("2 www.example.com1"), 1);
+}
