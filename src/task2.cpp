@@ -1,15 +1,8 @@
 #include <iostream> // i - input    o - output   stream - data streams for input and output
 #include <string>
 #include "./functions.cpp"
-<<<<<<< HEAD
-#include "./tempofek.cpp"
-#include "./linkedlist.cpp"
-#include "./splitfunction.cpp"
-using namespace std;
-=======
 using namespace std; 
 //this is the file that represent the loop.
->>>>>>> main
 
 int main() {
 
@@ -24,9 +17,10 @@ int main() {
     int place1;
     int place2;
     int first_input_size;
+    vector <string> my_vector;
     getline(cin, user_input);
 
-    // // get a valid input.
+    //get a valid input.
     while (firstInputCheck(user_input) == 0) {
         getline(cin, user_input);
     }
@@ -81,10 +75,12 @@ int main() {
         if (choice == 1){
             //in case the user want to enter a URL.
             if (first_input_size == 2) {
+
                 //in case only one bit in the bloom filter need to be changed.
                 place1 = (DoHash(hash_times,user_URL))%array_size;
                 bloom_filter[place1]=1; 
             } else {
+
                 //in case two bits in the bloom filter need to be changed.
                 //the first place.
                 place1 = (DoHash(hash1,user_URL))%array_size;
@@ -96,8 +92,8 @@ int main() {
                 
             }
 
-            // add url to link list.
-            
+            // adding url to the vecotr.
+            my_vector.push_back(user_URL);
 
         } else {
             if (choice == 2) {
@@ -109,18 +105,22 @@ int main() {
                     if (bloom_filter[place1] != 1) {
                         cout << "false" << endl;
                     } else {
-                        // need to check false positive;
+                        // bloom filter was true;
                         cout << "true" << " ";
-                        // need to check in link list and print true or false.
+
+                        //checking false positive situation.
+                        cout << checkIfUrlExist(my_vector, user_URL) << endl;
                     }
                 } else {
                     //need to check the url exists in two places.
                     if (bloom_filter[place1] != 1 || bloom_filter[place2] != 1) {
                         cout << "false" << endl;
                     } else {
-                        // need to check false positive;
+                        // bloom filter was true;
                         cout << "true" << " ";
-                        // need to check in link list and print true or false.
+
+                        //checking false positive situation.
+                        cout << checkIfUrlExist(my_vector, user_URL) << endl;
                     }
                 }
             }
