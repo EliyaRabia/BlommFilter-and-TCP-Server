@@ -24,5 +24,5 @@ TEST(KeletTest4, passedTest1) {
 EXPECT_EQ(checkStringFun("ofek"), 0);
 }
 TEST(KeletTest5, falseTest2) {
-EXPECT_EQ(isCustomURL("2 www.example.com1"), 1);
+EXPECT_EQ(checkStringFun("2 www.example.com1"), 1);
 } 
