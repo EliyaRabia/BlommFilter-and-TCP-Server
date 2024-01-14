@@ -20,9 +20,9 @@ TEST(UrlTest2, basicTest2) {
 EXPECT_EQ(isCustomURL("www.example.com1"), 1);
 } 
 
-TEST(KeletTest4, passedTest) {
+TEST(KeletTest4, passedTest1) {
 EXPECT_EQ(checkStringFun("ofek"), 0);
 }
-TEST(UrlTest2, falseTest2) {
+TEST(KeletTest5, falseTest2) {
 EXPECT_EQ(isCustomURL("2 www.example.com1"), 1);
 } 
