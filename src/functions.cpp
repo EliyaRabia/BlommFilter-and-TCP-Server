@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 //this file contains our functions we use in task2 
 
@@ -66,6 +67,14 @@ bool checkStringFun(string s){
     return isCustomURL(url);
     
 }   
+bool checkIfUrlExist(vector<string> urls, string new_url){
+    for (string i : urls) {
+        if(i.compare(new_url)==0){
+            return true;
+        }
+    }
+    return false;
+}
 
 long int DoHash (int digit, string s){
     //Gets a number and a string and does hashing or double hashing depends on the number.

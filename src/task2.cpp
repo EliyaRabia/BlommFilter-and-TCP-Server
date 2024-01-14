@@ -1,7 +1,6 @@
 #include <iostream> // i - input    o - output   stream - data streams for input and output
 #include <string>
 #include "./functions.cpp"
-#include "./linkedlist.cpp"
 using namespace std; 
 //this is the file that represent the loop.
 
