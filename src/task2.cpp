@@ -1,6 +1,8 @@
 #include <iostream> // i - input    o - output   stream - data streams for input and output
 #include <string>
 #include "./functions.cpp"
+#include "./tempofek.cpp"
+#include "./linkedlist.cpp"
 using namespace std;
 
 int main() {
@@ -44,14 +46,10 @@ int main() {
     }
     int bloom_filter[array_size];
 
-
-
     //initilaze the array.
     for (int i = 0; i < array_size; ++i) {
         bloom_filter[i] = 0;
     }
-
-
 
     while (true) {
         cin >> choice;
@@ -60,22 +58,21 @@ int main() {
 
         if (choice == 1){
             if (first_input_size == 2) {
-                //1 or 2 send by hash_times!!
-                place1 = myhash(user_URL)%array_size;
+                place1 = (DoHash(hash_times,user_URL))%array_size;
                 bloom_filter[place1]=1; 
             } else {
-                //represent the case the first input consist from three valures.
-                //1 or 2 send by hash1 and hash2!!
-                place1 = myhash(user_URL)%array_size;
+                //represent the case the first input consist from three values.
+                place1 = (DoHash(hash1,user_URL))%array_size;
                 bloom_filter[place1]=1;
 
-                //1 or 2 send!!
-                place2 = myhash(user_URL)%array_size;
+                //the second hash.
+                place2 = (DoHash(hash2,user_URL))%array_size;
                 bloom_filter[place2]=1;
                 
             }
 
             // add url to link list.
+            
 
         } else {
             if (choice == 2) {
