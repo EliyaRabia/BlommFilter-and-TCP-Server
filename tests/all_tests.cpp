@@ -18,4 +18,11 @@ EXPECT_EQ(isCustomURL("aa"), 0);
 }
 TEST(UrlTest2, basicTest2) {
 EXPECT_EQ(isCustomURL("www.example.com1"), 1);
+} 
+
+TEST(KeletTest4, passedTest) {
+EXPECT_EQ(checkStringFun("ofek"), 0);
 }
+TEST(UrlTest2, falseTest2) {
+EXPECT_EQ(isCustomURL("2 www.example.com1"), 1);
+} 
