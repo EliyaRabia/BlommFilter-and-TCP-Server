@@ -2,11 +2,12 @@
 #include <string>
 #include "./functions.cpp"
 #include <vector>
+#include "./ICommand.cpp"
 
 using namespace std; 
 
 
-class Option2 {
+class Option2 : public ICommand {
     private :
      int hash1;
      int hash2;
