@@ -2,6 +2,7 @@
 #include <string>
 #include "./Console_Menu.cpp"
 #include "./Option_Menu.cpp"
+#include "./Option1.cpp"
 #include <vector>
 using namespace std;  
 
@@ -18,12 +19,25 @@ class App{
                 bloom_filter[i] = 0;
             }
             IMenu* b = new Option_Menu;
+            vector <string> my_vector;
+            Option1* op1 = new Option1(cm->GetFirstInputSize(),cm->GetHashTimes(),cm->GetHash1(),cm->GetHash2(),cm->GetArray_size()); 
             while (true)
             {
                 b->runMenu();
-                Option_Menu* op = dynamic_cast<Option_Menu*>(b);
-                cout <<op->GetChoice()<<endl;
-                cout <<op->GetUserUrl()<<endl;
+                Option_Menu* pm = dynamic_cast<Option_Menu*>(b);
+                cout<<pm->GetChoice()<<endl; 
+                cout<<pm->GetUserUrl()<<endl; 
+                if(pm->GetChoice()==1){
+                    op1->execute(bloom_filter,pm->GetUserUrl(),my_vector); 
+                    
+
+                   for (int i = 0; i < my_vector.size(); ++i) {
+                       std::cout << my_vector[i] << " ";
+                   } 
+                   cout<<endl;
+
+                }
+                
             }
         }
 

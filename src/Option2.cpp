@@ -1,6 +1,6 @@
 #include <iostream> // i - input    o - output   stream - data streams for input and output
 #include <string>
-#include "./functions.cpp"
+
 #include <vector>
 #include "./ICommand.h"
 

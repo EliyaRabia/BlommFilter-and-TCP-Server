@@ -10,6 +10,7 @@ class Console_Menu : public IMenu {
         int hash_times; 
         int hash1;
         int hash2; 
+        int first_input_size;
 
         int firstInputCheck(const string& input) {
             int countNumbers = 0;
@@ -63,6 +64,7 @@ class Console_Menu : public IMenu {
             hash_times=0;
             hash1=0;
             hash2=0;
+            first_input_size=0;
         } 
         void runMenu(){
             int split_index2;
@@ -76,7 +78,7 @@ class Console_Menu : public IMenu {
             cin.clear();
 
             //this is the right input
-            int first_input_size = firstInputCheck(user_input); 
+            first_input_size = firstInputCheck(user_input); 
             int split_index = user_input.find(' ');
 
             //The first input from the user, is the array size.
@@ -109,5 +111,8 @@ class Console_Menu : public IMenu {
         } 
         int GetHash2(){
             return hash2;
+        } 
+        int GetFirstInputSize(){
+            return first_input_size;
         }
 };
