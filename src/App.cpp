@@ -1,4 +1,4 @@
-#include <iostream> // i - input    o - output   stream - data streams for input and output
+#include <iostream> 
 #include <string>
 #include "./Console_Menu.cpp"
 #include "./Option_Menu.cpp"
@@ -6,11 +6,13 @@
 #include "./Option2.cpp"
 #include <vector>
 using namespace std;  
-
+/*
+This class runs the program. and uses all the proper clsses
+*/
 class App{
-    
     public:   
         void run(){
+            // create a menu that get the first input
             IMenu* a = new Console_Menu();
             a->runMenu(); 
             Console_Menu* cm = dynamic_cast<Console_Menu*>(a);
@@ -23,10 +25,12 @@ class App{
             vector <string> my_vector;
             Option1* op1 = new Option1(cm->GetFirstInputSize(),cm->GetHashTimes(),cm->GetHash1(),cm->GetHash2(),cm->GetArray_size()); 
             Option2* op2 = new Option2(cm->GetFirstInputSize(),cm->GetHashTimes(),cm->GetHash1(),cm->GetHash2(),cm->GetArray_size()); 
+            // this while loop runs for infinity, get the next commands from the user.
             while (true)
             {
                 b->runMenu();
                 Option_Menu* pm = dynamic_cast<Option_Menu*>(b);
+                // check which option the user chose to run.
                 if(pm->GetChoice()==1){
                     op1->execute(bloom_filter,pm->GetUserUrl(),my_vector); 
                 } else {
@@ -34,18 +38,11 @@ class App{
                 }
                 
             }
-
+        // delete all the meomory.
         delete op2;
         delete op1;
         delete b;
         delete a;
         }
-
 }; 
-int main() {
-    App* ap = new App();
-    ap->run();
-
-    return 0;
-}
 

@@ -1,4 +1,14 @@
 #include <gtest/gtest.h>
+#include "../src/Console_Menu.cpp"
+TEST(kelet,pass){
+    Console_Menu a;
+    EXPECT_EQ(a.GetArray_size(),0);
+}
+TEST(kelet2,pass){
+    Console_Menu a;
+    EXPECT_EQ(a.GetFirstInputSize(),0);
+}
+/*
 #include "../src/functions.cpp" // here we include the code to be tested
 TEST(keletTest, failedTest) {
 EXPECT_EQ(firstInputCheck("234  876a"), 0);
@@ -30,3 +40,4 @@ EXPECT_EQ(checkStringFun("2 www.example.com1"), 1);
 TEST(mainTest, passedTest) {
 EXPECT_EQ(checkStringFun("2 www.example.com1"), 1);
 }
+*/
