@@ -18,18 +18,18 @@ class Option1{
             if (first_input_size == 2) {
 
                 //in case only one bit in the bloom filter need to be changed.
-                int place1 = (DoHash(hash_times,url))%array_size;
+                int place1 = abs((DoHash(hash_times,url))%array_size);
                 bloom_filter[place1]=1; 
             } 
             else {
 
                 //in case two bits in the bloom filter need to be changed.
                 //the first place.
-                int place1 = (DoHash(hash1,url))%array_size;
+                int place1 = abs((DoHash(hash1,url))%array_size);
                 bloom_filter[place1]=1;
 
                 //the second place.
-                int place2 = (DoHash(hash2,url))%array_size;
+                int place2 = abs((DoHash(hash2,url))%array_size);
                 bloom_filter[place2]=1;
                 
             }

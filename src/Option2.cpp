@@ -14,6 +14,14 @@ class Option2 : public ICommand {
         int hash2; 
         int array_size; 
 
+        bool checkIfUrlExist(vector<string> urls, string new_url){
+            for (string i : urls) {
+                if(i.compare(new_url)==0){
+                    return true;
+                }
+            }
+            return false;
+        }
     public:
     // Constructor.
     Option2(int first_input_size,int hash_times,int hash1,int hash2,int array_size): first_input_size(first_input_size),hash_times(hash_times),hash1(hash1),hash2(hash2),array_size(array_size){} 
@@ -31,7 +39,7 @@ class Option2 : public ICommand {
     int place;
 
     //need to check the url exists in one place.
-    place = (DoHash(hash_times,url))%array_size;
+    place = abs((DoHash(hash_times,url))%array_size);
     if (bloom_filter[place] != 1) {
         cout << "false" << endl;
         } else {
@@ -54,10 +62,10 @@ class Option2 : public ICommand {
     int place2;
 
     //the first place.
-    place1 = (DoHash(hash1,url))%array_size;
+    place1 = abs((DoHash(hash1,url))%array_size);
 
     //the second place.
-    place2 = (DoHash(hash2,url))%array_size;
+    place2 = abs((DoHash(hash2,url))%array_size);
 
     if (bloom_filter[place1] != 1 || bloom_filter[place2] != 1) {
         cout << "false" << endl;
