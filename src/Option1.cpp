@@ -26,14 +26,10 @@ class Option1{
                 //in case two bits in the bloom filter need to be changed.
                 //the first place.
                 int place1 = (DoHash(hash1,url))%array_size;
-                cout << " hash1 =" << DoHash(hash1,url) << endl;
                 bloom_filter[place1]=1;
-                cout<< place1<<endl;
 
                 //the second place.
                 int place2 = (DoHash(hash2,url))%array_size;
-                cout << " hash2 =" << DoHash(hash2,url) << endl;
-                cout<< place2<<endl;
                 bloom_filter[place2]=1;
                 
             }

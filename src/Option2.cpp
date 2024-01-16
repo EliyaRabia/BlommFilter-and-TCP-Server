@@ -1,22 +1,23 @@
-#include <iostream> // i - input    o - output   stream - data streams for input and output
+#include <iostream>
 #include <string>
-
 #include <vector>
-#include "./ICommand.h"
+#include "ICommand.h"
 
 using namespace std; 
 
 
 class Option2 : public ICommand {
     private :
-     int hash1;
-     int hash2;
+        int first_input_size;
+        int hash_times;
+        int hash1;
+        int hash2; 
+        int array_size; 
 
     public:
     // Constructor.
-    Option2(int hash1, int hash2) : hash1(hash1), hash2(hash2) {
+    Option2(int first_input_size,int hash_times,int hash1,int hash2,int array_size): first_input_size(first_input_size),hash_times(hash_times),hash1(hash1),hash2(hash2),array_size(array_size){} 
 
-    }   
 
     int getHash1(){
         return hash1;
@@ -26,19 +27,19 @@ class Option2 : public ICommand {
     }
 
     //check in one place in the bloom filter.
-    void checking1(int hash, int* bloomFilter, int arraySize , vector<string>  myVector , string userURL) {
+    void checking1(int* bloom_filter,string url,vector <string>& my_vector) {
     int place;
 
     //need to check the url exists in one place.
-    place = (DoHash(hash,userURL))%arraySize;
-    if (bloomFilter[place] != 1) {
+    place = (DoHash(hash_times,url))%array_size;
+    if (bloom_filter[place] != 1) {
         cout << "false" << endl;
         } else {
             // bloom filter was true;
             cout << "true" << " ";
 
             //checking false positive situation.
-            if (checkIfUrlExist(myVector, userURL)) {
+            if (checkIfUrlExist(my_vector, url)) {
                 cout << "true" << endl;
                 } else {
                     cout << "false" << endl;
@@ -47,25 +48,25 @@ class Option2 : public ICommand {
     }
 
     //check in two places in the bloom filter.
-    void checking2(int* bloomFilter, int arraySize , vector<string>  myVector , string userURL) {
+    void checking2(int* bloom_filter,string url,vector <string>& my_vector) {
     //need to check the url exists in two places.
     int place1;
     int place2;
 
     //the first place.
-    place1 = (DoHash(hash1,userURL))%arraySize;
+    place1 = (DoHash(hash1,url))%array_size;
 
     //the second place.
-    place2 = (DoHash(hash2,userURL))%arraySize;
+    place2 = (DoHash(hash2,url))%array_size;
 
-    if (bloomFilter[place1] != 1 || bloomFilter[place2] != 1) {
+    if (bloom_filter[place1] != 1 || bloom_filter[place2] != 1) {
         cout << "false" << endl;
         } else {
             // bloom filter was true;
             cout << "true" << " ";
 
             //checking false positive situation.
-            if (checkIfUrlExist(myVector, userURL)) {
+            if (checkIfUrlExist(my_vector, url)) {
                 cout << "true" << endl;
                 } else {
                     cout << "false" << endl;
@@ -73,21 +74,17 @@ class Option2 : public ICommand {
                 }
 } 
 
-void execute(int* bloomFilter, int arraySize, int times, vector <string> myVector, string userURL) {
+void execute(int* bloom_filter,string url,vector <string>& my_vector) {
         //checking in the bloom filter one or two times.
-        switch (times) {
-        case 1:
+        switch (first_input_size) {
+        case 2:
             //need to check the url exists in one place.
-            if (hash1 != 0) {
-                checking1(hash1, bloomFilter, arraySize, myVector, userURL);
-            } else {
-                checking1(hash2, bloomFilter, arraySize, myVector, userURL);
-            }
+            checking1(bloom_filter, url, my_vector);
                 
             break;
-        case 2:
+        case 3:
             //need to check the url exists in two places.
-            checking2(bloomFilter, arraySize, myVector, userURL);
+            checking2(bloom_filter, url, my_vector);
             
             break;
         default:
@@ -97,24 +94,4 @@ void execute(int* bloomFilter, int arraySize, int times, vector <string> myVecto
 
     
 };
-
-int main() {
-    int hash1 = 1;
-    int hash2 = 2;
-    Option2 p = Option2(hash1, hash2);
-    int bloomFilter[8];
-
-    //initilaze the array.
-    for (int i = 0; i < 8; ++i) {
-        bloomFilter[i] = 0;
-    }
-    int times = 2;
-    vector <string> myVector;
-    string userURL = "www.example.com0";
-    // adding url to the vecotr.
-
-    p.execute(bloomFilter, 8, 2, myVector, userURL);
-
-    return 0;
-}
 
