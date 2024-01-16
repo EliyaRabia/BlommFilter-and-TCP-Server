@@ -7,7 +7,7 @@ using namespace std;
 class IMenu {
 public:
     // the abstarct class
-    virtual int nextCommand() = 0;
+    virtual void runMenu() = 0;
 
     // Virtual destructor (recommended when dealing with polymorphism)
     virtual ~IMenu() = default;

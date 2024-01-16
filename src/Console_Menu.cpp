@@ -2,9 +2,10 @@
 #include <string>
 #include "./functions.cpp"
 #include <vector>
+#include "./IMenu.cpp"
 using namespace std;  
 
-class Console_Menu{
+class Console_Menu : public IMenu {
     private:
         int array_size; 
         int hash_times; 
@@ -17,7 +18,7 @@ class Console_Menu{
             hash1=0;
             hash2=0;
         } 
-        void runFirstInput(){
+        void runMenu(){
             int split_index2;
             string user_input;
             getline(cin, user_input);
