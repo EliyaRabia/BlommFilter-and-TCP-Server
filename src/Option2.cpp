@@ -2,7 +2,7 @@
 #include <string>
 #include "./functions.cpp"
 #include <vector>
-#include "./ICommand.cpp"
+#include "./ICommand.h"
 
 using namespace std; 
 

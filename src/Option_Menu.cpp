@@ -1,14 +1,31 @@
 #include <iostream> // i - input    o - output   stream - data streams for input and output
 #include <string>
-#include "./functions.cpp"
 #include <vector>
-#include "./IMenu.cpp"
+#include "./IMenu.h"
 using namespace std;
   
 class Option_Menu : public IMenu {
     private :
         string user_URL;
         int choice;
+        bool isCustomURL(string input) {
+            // Check if the input starts with "www." and ends with ".com"
+            return (input.compare(0, 4, "www.") == 0);
+        } 
+
+        bool checkStringFun(string s){
+            //Gets a string and check if the string is in the form of "1\2 "some url" "
+            if (s[0]!='1'&& s[0]!='2'){
+                return false;
+            } 
+            if(s[1]!=' '){
+                return false;
+            } 
+            string url = s.substr(2); 
+            return isCustomURL(url);
+            
+        }   
+
     public : 
     // constructor
         Option_Menu(){

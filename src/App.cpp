@@ -12,10 +12,6 @@ class App{
             IMenu* a = new Console_Menu();
             a->runMenu(); 
             Console_Menu* cm = dynamic_cast<Console_Menu*>(a);
-            // cout<<consoleMenuInstance->GetArray_size()<<endl;
-            // cout<<consoleMenuInstance->GetHashTimes()<<endl; 
-            // cout<<consoleMenuInstance->GetHash1()<<endl;  
-            // cout<<consoleMenuInstance->GetHash2()<<endl; 
             int bloom_filter[cm->GetArray_size()]; 
             //initilaze the array.
             for (int i = 0; i < cm->GetArray_size(); ++i) {

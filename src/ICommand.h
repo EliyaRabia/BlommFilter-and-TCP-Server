@@ -1,7 +1,8 @@
+#ifndef ICOMMAND_H
+#define ICOMMAND_H
 #include <iostream>
 #include <string>
 #include <vector>
-
 using namespace std; 
 
 class ICommand {
@@ -12,3 +13,4 @@ public:
     // Virtual destructor (recommended when dealing with polymorphism)
     virtual ~ICommand() = default;
 };
+#endif 

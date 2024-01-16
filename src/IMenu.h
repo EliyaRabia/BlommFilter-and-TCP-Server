@@ -1,8 +1,5 @@
-#include <iostream>
-#include <string>
-#include <vector>
-
-using namespace std; 
+#ifndef IMENU_H
+#define IMENU_H
 
 class IMenu {
 public:
@@ -11,4 +8,5 @@ public:
 
     // Virtual destructor (recommended when dealing with polymorphism)
     virtual ~IMenu() = default;
-};
+}; 
+#endif // IMENU_H
