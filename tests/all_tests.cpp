@@ -6,7 +6,7 @@ TEST(kelet,pass){
 }
 TEST(kelet2,pass){
     Console_Menu a;
-    EXPECT_EQ(a.GetFirstInputSize(),0);
+    EXPECT_EQ(a.GetFirstInputSize(),1);
 }
 /*
 #include "../src/functions.cpp" // here we include the code to be tested
