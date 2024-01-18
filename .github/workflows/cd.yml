@@ -18,11 +18,11 @@ jobs:
 
     - name: Build and push Docker image
       env:
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        DOCKER_USERNAME: ${{ secrets.SECRET_NAME }}
+        DOCKER_PASSWORD: ${{ secrets.PASSWORD }}
       run: |
         docker buildx create --use
-        docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        docker login -u $SECRET_NAME -p $PASSWORD
         rm -Rf build/
         docker build -t ofekyemini87/ex1 .
         docker push ofekyemini87/ex1:latest
