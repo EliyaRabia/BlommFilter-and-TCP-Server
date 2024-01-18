@@ -22,7 +22,7 @@ jobs:
         DOCKER_PASSWORD: ${{ secrets.PASSWORD }}
       run: |
         docker buildx create --use
-        docker login -u $SECRET_NAME -p $PASSWORD
+        docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
         rm -Rf build/
         docker build -t ofekyemini87/ex1 .
         docker push ofekyemini87/ex1:latest
