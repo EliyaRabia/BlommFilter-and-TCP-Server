@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "./functions.cpp"
+//#include "./functions.cpp"
 using namespace std; 
 
 class ICommand {

@@ -10,7 +10,21 @@ class Option1{
         int hash1;
         int hash2; 
         int array_size; 
-
+    long int DoHash (int digit, string s){
+        //Gets a number and a string and does hashing or double hashing depends on the number.
+        hash<string> hashF;
+        long int val=hashF(s);
+        if(digit==1){
+            return val;
+        } 
+        if(digit==2){
+            string second = to_string(val);  
+            return hashF(second);
+        }
+        else{
+            return -1;
+        }
+    }
     public : 
         Option1(int first_input_size,int hash_times,int hash1,int hash2,int array_size): first_input_size(first_input_size),hash_times(hash_times),hash1(hash1),hash2(hash2),array_size(array_size){} 
 
