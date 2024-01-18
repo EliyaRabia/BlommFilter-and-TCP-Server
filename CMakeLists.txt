@@ -14,7 +14,7 @@ https://github.com/google/googletest/archive/03597a01ee50ed
 
 enable_testing()
 set(SOURCE_FILES
-src/App.cpp # this is where the code we want to test
+src/Main.cpp # this is where the code we want to test
 )
 
 set(TEST_FILES
