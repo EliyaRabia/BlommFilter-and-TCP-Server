@@ -13,22 +13,29 @@ class Console_Menu : public IMenu {
         int first_input_size;
 
         int firstInputCheck(const string& input) {
-            if(input[0]-'0'<=0){
+            if(input[0]-'0'==0|| input[0]== ' '){
                 return 0;
             }
             int countNumbers = 0;
             bool inNumber = false;
             bool isCorrectdigit=false;
+            bool isSpaceNow=false;
             int lastDigit=0;
 
             for (char c : input) {
+                if( c== ' ' && isSpaceNow==true){
+                    return 0;
+                }
                 if (c == ' ') { //case of space
                     inNumber = false;
+                    isSpaceNow=true;
                     if(isCorrectdigit==true){
                         isCorrectdigit=false;
                     }
                 } 
+
                 else if (isdigit(c)) { // case that the char is a number
+                    isSpaceNow=false;
                     if (!inNumber) {
                         if(lastDigit!=(c-'0')){
                             ++countNumbers;
@@ -59,7 +66,7 @@ class Console_Menu : public IMenu {
             } 
             // in this case we have 2 different inputs: array size and 1 or 2,we will check if its 1 or 2 and return it. we have only one hash in this case
             if(countNumbers==2){ 
-                bool isSpaceNow=true;
+                isSpaceNow=true;
                 int valueNum=0;
                 for(char c : input){
                     if( c != ' '&& valueNum==1){

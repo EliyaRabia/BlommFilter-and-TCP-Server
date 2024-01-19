@@ -17,6 +17,7 @@ class Option_Menu : public IMenu {
             if(s[1]!=' '){
                 return false;
             } 
+            
             //string url = s.substr(2); 
             return true;
             
