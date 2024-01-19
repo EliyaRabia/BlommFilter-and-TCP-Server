@@ -14,11 +14,12 @@ class Option_Menu : public IMenu {
             if (s[0]!='1'&& s[0]!='2'){
                 return false;
             } 
-            if(s[1]!=' '){
+            //some exceptions check
+            if(s[1]!=' ' || s[2]==' ' || s[s.length()-1]==' '){
                 return false;
             } 
+
             
-            //string url = s.substr(2); 
             return true;
             
         }   

@@ -6,11 +6,11 @@ using namespace std;
 
 class Console_Menu : public IMenu {
     private:
-        int array_size; 
-        int hash_times; 
-        int hash1;
-        int hash2; 
-        int first_input_size;
+        int array_size; //array size
+        int hash_times; //times of 1 function
+        int hash1; //times of the first of the 2 functions
+        int hash2; //times of the second of the 2 functions
+        int first_input_size; //represnt if using one function or two
 
         int firstInputCheck(const string& input) {
             if(input[0]-'0'==0|| input[0]== ' '){
@@ -19,11 +19,13 @@ class Console_Menu : public IMenu {
             int countNumbers = 0;
             bool inNumber = false;
             bool isCorrectdigit=false;
+            
             bool isSpaceNow=false;
             int lastDigit=0;
 
             for (char c : input) {
                 if( c== ' ' && isSpaceNow==true){
+                    //if there is a double space
                     return 0;
                 }
                 if (c == ' ') { //case of space
@@ -56,9 +58,14 @@ class Console_Menu : public IMenu {
                     lastDigit=c-'0';
                          
                 } 
+                //in case there is a non space or digit char
                 else {
                     return 0;
                 }
+            }
+            ///check if there is useless space at the end of the input
+            if(input[input.length()-1]==' '){
+                return 0;
             }
 
             if(countNumbers==0||countNumbers==1){ //we return 0 in case that there were 0 or 1 values in the input
