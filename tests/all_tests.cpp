@@ -87,7 +87,7 @@ TEST(outPutFor3a, pass){
     EXPECT_EQ(p2.checking2(bloomFilter, url, myVector),0);
 }
 
-//true true in case of 3 inputs
+//true false in case of 3 inputs
 TEST(outPutFor3b, pass){
     int bloomFilter[8];
     for(int i=0;i<8;i++){
@@ -126,6 +126,7 @@ TEST(outPutFor3c, pass){
     EXPECT_EQ(p2.checking2(bloomFilter, url, myVector),2);
 }
 
+//these are old tests that we used before refactoring to classes.
 /*
 #include "../src/functions.cpp" // here we include the code to be tested
 TEST(keletTest, failedTest) {
