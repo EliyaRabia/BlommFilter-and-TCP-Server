@@ -118,7 +118,6 @@ using namespace std;
             firstInputSize = firstInputCheck(userInput); 
             int splitIndex = userInput.find(' ');
             arraySize = stoi(userInput.substr(0, splitIndex));
-            cout<<arraySize<<endl;
             //in this case there are 2 hash functions where one must have 2 and the other 1.
             if(firstInputSize==3){
                 hash1=1;
@@ -129,9 +128,6 @@ using namespace std;
                 hashTimes=firstInputSize;
                 firstInputSize=2;
             }  
-            cout<<"hashTimes: "<<hashTimes<<endl; 
-            cout<<"hash1: "<<hash1<<endl;
-            cout<<"hash2: "<<hash2<<endl;
 
         }  
         int ConsoleMenu::getArraySize(){
