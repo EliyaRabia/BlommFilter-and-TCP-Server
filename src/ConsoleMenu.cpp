@@ -94,36 +94,36 @@ using namespace std;
 
     // public:
         ConsoleMenu:: ConsoleMenu(){
-            array_size=0;
-            hash_times=0;
+            arraySize=0;
+            hashTimes=0;
             hash1=0;
             hash2=0;
-            first_input_size=0;
+            firstInputSize=0;
         } 
         void ConsoleMenu::runMenu(){
-            int split_index2;
-            string user_input;
-            getline(cin, user_input);
+            int splitIndex2;
+            string userInput;
+            getline(cin, userInput);
             //get a valid input.
-            while (firstInputCheck(user_input) == 0) {
-                getline(cin, user_input);
+            while (firstInputCheck(userInput) == 0) {
+                getline(cin, userInput);
             } 
             // we will clear the input buffer
             cin.clear();
 
             //this is the right input and it indicates 1 2 or 3 where 1 is one function with 1 as value, 2 is one function with 2 as value, and three is 2 functions with both 1 and 2 as values.
-            first_input_size = firstInputCheck(user_input); 
-            int split_index = user_input.find(' ');
-            array_size = stoi(user_input.substr(0, split_index));
+            firstInputSize = firstInputCheck(userInput); 
+            int splitIndex = userInput.find(' ');
+            arraySize = stoi(userInput.substr(0, splitIndex));
             //in this case there are 2 hash functions where one must have 2 and the other 1.
-            if(first_input_size==3){
+            if(firstInputSize==3){
                 hash1=1;
                 hash2=2;
             }
             //in this case we have one hash function, the value depends on the var.
             else{
-                hash_times=first_input_size;
-                first_input_size=2;
+                hashTimes=firstInputSize;
+                firstInputSize=2;
             } 
             /*
             //get a valid input.
@@ -157,18 +157,18 @@ using namespace std;
             */
 
         }  
-        int ConsoleMenu::GetArray_size(){
-            return array_size;
+        int ConsoleMenu::getArraySize(){
+            return arraySize;
         } 
-        int ConsoleMenu::GetHashTimes(){
-            return hash_times;
+        int ConsoleMenu::getHashTimes(){
+            return hashTimes;
         }  
-        int ConsoleMenu::GetHash1(){
+        int ConsoleMenu::getHash1(){
             return hash1;
         } 
-        int ConsoleMenu::GetHash2(){
+        int ConsoleMenu::getHash2(){
             return hash2;
         } 
-        int ConsoleMenu::GetFirstInputSize(){
-            return first_input_size;
+        int ConsoleMenu::getFirstInputSize(){
+            return firstInputSize;
         }

@@ -1,13 +1,15 @@
 #include <gtest/gtest.h>
 #include "../src/ConsoleMenu.cpp"
+
 TEST(kelet,pass){
     ConsoleMenu a;
-    EXPECT_EQ(a.GetArray_size(),0);
+    EXPECT_EQ(a.getArraySize(),0);
 }
 TEST(kelet2,pass){
     ConsoleMenu a;
-    EXPECT_EQ(a.GetFirstInputSize(),0);
+    EXPECT_EQ(a.getFirstInputSize(),0);
 }
+
 /*
 #include "../src/functions.cpp" // here we include the code to be tested
 TEST(keletTest, failedTest) {

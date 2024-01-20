@@ -5,7 +5,7 @@
 #include "OptionMenu.h"
 using namespace std;
   
-        string user_URL;
+        string userURL;
         int choice;
 
         bool OptionMenu::checkStringFun(string s){
@@ -25,28 +25,28 @@ using namespace std;
 
     // constructor
         OptionMenu::OptionMenu(){
-            user_URL = "";
+            userURL = "";
             choice = -1;
         }
         void OptionMenu::runMenu(){
-            string user_input;
-            getline(cin, user_input);
+            string userInput;
+            getline(cin, userInput);
 
             //need to check the input
-            while (!checkStringFun(user_input)) {
+            while (!checkStringFun(userInput)) {
             // we will clear the input buffer
 	        cin.clear();
-            getline(cin, user_input);
+            getline(cin, userInput);
             }
             //split the input into choice and URL.
-            int split_index = user_input.find(' ');
-            choice = stoi(user_input.substr(0, split_index));
-            user_URL = user_input.substr(split_index + 1);
+            int splitIndex = userInput.find(' ');
+            choice = stoi(userInput.substr(0, splitIndex));
+            userURL = userInput.substr(splitIndex + 1);
         }
 
-        int OptionMenu::GetChoice(){
+        int OptionMenu::getChoice(){
             return choice;
         }
-        string OptionMenu::GetUserUrl(){
-            return user_URL;
+        string OptionMenu::getUserUrl(){
+            return userURL;
         }

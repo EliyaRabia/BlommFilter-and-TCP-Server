@@ -8,7 +8,7 @@ using namespace std;
 class IOptions {
 public:
     // the abstract class
-    virtual long int DoHash (int digit, string s) = 0;
+    virtual long int doHash (int digit, string s) = 0;
 
     // Virtual destructor (recommended when dealing with polymorphism)
     virtual ~IOptions() = default;

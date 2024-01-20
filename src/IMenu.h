@@ -3,7 +3,7 @@
 
 class IMenu {
 public:
-    // the abstarct class
+    // the abstract class
     virtual void runMenu() = 0;
 
     // Virtual destructor (recommended when dealing with polymorphism)

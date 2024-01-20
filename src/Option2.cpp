@@ -7,7 +7,7 @@
 
 using namespace std; 
 
-        long int Option2::DoHash (int digit, string s){
+        long int Option2::doHash (int digit, string s){
             //Gets a number and a string and does hashing or double hashing depends on the number.
             hash<string> hashF;
             long int val=hashF(s);
@@ -22,9 +22,9 @@ using namespace std;
                 return -1;
             }
         }
-        bool Option2::checkIfUrlExist(vector<string> urls, string new_url){
+        bool Option2::checkIfUrlExist(vector<string> urls, string newUrl){
             for (string i : urls) {
-                if(i.compare(new_url)==0){
+                if(i.compare(newUrl)==0){
                     return true;
                 }
             }
@@ -32,7 +32,7 @@ using namespace std;
         }
 
     // Constructor.
-    Option2::Option2(int first_input_size,int hash_times,int hash1,int hash2,int array_size): first_input_size(first_input_size),hash_times(hash_times),hash1(hash1),hash2(hash2),array_size(array_size){} 
+    Option2::Option2(int firstInputSize,int hashTimes,int hash1,int hash2,int arraySize): firstInputSize(firstInputSize),hashTimes(hashTimes),hash1(hash1),hash2(hash2),arraySize(arraySize){} 
 
 
     int Option2::getHash1(){
@@ -43,19 +43,19 @@ using namespace std;
     }
 
     //check in one place in the bloom filter.
-    void Option2::checking1(int* bloom_filter,string url,vector <string>& my_vector) {
+    void Option2::checking1(int* bloomFilter,string url,vector <string>& myVector) {
     int place;
 
     //need to check the url exists in one place.
-    place = abs((DoHash(hash_times,url))%array_size);
-    if (bloom_filter[place] != 1) {
+    place = abs((doHash(hashTimes,url))%arraySize);
+    if (bloomFilter[place] != 1) {
         cout << "false" << endl;
         } else {
             // bloom filter was true;
             cout << "true" << " ";
 
             //checking false positive situation.
-            if (checkIfUrlExist(my_vector, url)) {
+            if (checkIfUrlExist(myVector, url)) {
                 cout << "true" << endl;
                 } else {
                     cout << "false" << endl;
@@ -64,25 +64,25 @@ using namespace std;
     }
 
     //check in two places in the bloom filter.
-    void Option2::checking2(int* bloom_filter,string url,vector <string>& my_vector) {
+    void Option2::checking2(int* bloomFilter,string url,vector <string>& myVector) {
     //need to check the url exists in two places.
     int place1;
     int place2;
 
     //the first place.
-    place1 = abs((DoHash(hash1,url))%array_size);
+    place1 = abs((doHash(hash1,url))%arraySize);
 
     //the second place.
-    place2 = abs((DoHash(hash2,url))%array_size);
+    place2 = abs((doHash(hash2,url))%arraySize);
 
-    if (bloom_filter[place1] != 1 || bloom_filter[place2] != 1) {
+    if (bloomFilter[place1] != 1 || bloomFilter[place2] != 1) {
         cout << "false" << endl;
         } else {
             // bloom filter was true;
             cout << "true" << " ";
 
             //checking false positive situation.
-            if (checkIfUrlExist(my_vector, url)) {
+            if (checkIfUrlExist(myVector, url)) {
                 cout << "true" << endl;
                 } else {
                     cout << "false" << endl;
@@ -90,17 +90,17 @@ using namespace std;
                 }
 } 
 
-void Option2::execute(int* bloom_filter,string url,vector <string>& my_vector) {
+void Option2::execute(int* bloomFilter,string url,vector <string>& myVector) {
         //checking in the bloom filter one or two times.
-        switch (first_input_size) {
+        switch (firstInputSize) {
         case 2:
             //need to check the url exists in one place.
-            checking1(bloom_filter, url, my_vector);
+            checking1(bloomFilter, url, myVector);
                 
             break;
         case 3:
             //need to check the url exists in two places.
-            checking2(bloom_filter, url, my_vector);
+            checking2(bloomFilter, url, myVector);
             
             break;
         default:

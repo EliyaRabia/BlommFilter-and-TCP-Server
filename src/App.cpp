@@ -19,25 +19,25 @@ This class runs the program. and uses all the proper classes
             IMenu* a = new ConsoleMenu();
             a->runMenu(); 
             ConsoleMenu* cm = dynamic_cast<ConsoleMenu*>(a);
-            int bloom_filter[cm->GetArray_size()]; 
+            int bloomFilter[cm->getArraySize()]; 
             //initialize the array.
-            for (int i = 0; i < cm->GetArray_size(); ++i) {
-                bloom_filter[i] = 0;
+            for (int i = 0; i < cm->getArraySize(); ++i) {
+                bloomFilter[i] = 0;
             }
             IMenu* b = new OptionMenu;
-            vector <string> my_vector;
-            Option1* op1 = new Option1(cm->GetFirstInputSize(),cm->GetHashTimes(),cm->GetHash1(),cm->GetHash2(),cm->GetArray_size()); 
-            Option2* op2 = new Option2(cm->GetFirstInputSize(),cm->GetHashTimes(),cm->GetHash1(),cm->GetHash2(),cm->GetArray_size()); 
+            vector <string> myVector;
+            Option1* op1 = new Option1(cm->getFirstInputSize(),cm->getHashTimes(),cm->getHash1(),cm->getHash2(),cm->getArraySize()); 
+            Option2* op2 = new Option2(cm->getFirstInputSize(),cm->getHashTimes(),cm->getHash1(),cm->getHash2(),cm->getArraySize()); 
             // this while loop runs for infinity, get the next commands from the user.
             while (true)
             {
                 b->runMenu();
                 OptionMenu* pm = dynamic_cast<OptionMenu*>(b);
                 // check which option the user chose to run.
-                if(pm->GetChoice()==1){
-                    op1->execute(bloom_filter,pm->GetUserUrl(),my_vector); 
+                if(pm->getChoice()==1){
+                    op1->execute(bloomFilter,pm->getUserUrl(),myVector); 
                 } else {
-                    op2->execute(bloom_filter,pm->GetUserUrl(),my_vector);
+                    op2->execute(bloomFilter,pm->getUserUrl(),myVector);
                 }
                 
             }

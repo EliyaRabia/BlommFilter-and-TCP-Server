@@ -8,8 +8,8 @@ using namespace std;
 
 class ICommand {
 public:
-    // the abstarct class
-    virtual void execute(int* bloom_filter,string url,vector <string>& my_vector) = 0;
+    // the abstract class
+    virtual void execute(int* bloomFilter,string url,vector <string>& myVector) = 0;
 
     // Virtual destructor (recommended when dealing with polymorphism)
     virtual ~ICommand() = default;

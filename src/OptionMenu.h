@@ -9,15 +9,15 @@ using namespace std;
 class OptionMenu : public IMenu {
 
     private:
-        string user_URL;
+        string userURL;
         int choice;
         bool checkStringFun(string s);
 
     public :
         OptionMenu();
         void runMenu();
-        int GetChoice();
-        string GetUserUrl();
+        int getChoice();
+        string getUserUrl();
 };
 
 #endif //OptionMenu_H
