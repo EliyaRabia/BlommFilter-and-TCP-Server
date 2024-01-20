@@ -2,11 +2,11 @@
 #include <string>
 #include <vector>
 #include "IMenu.h"
-#include "Console_Menu.h"
+#include "ConsoleMenu.h"
 
 using namespace std;  
 
-        int Console_Menu:: firstInputCheck(const string& input) {
+        int ConsoleMenu:: firstInputCheck(const string& input) {
             if(input[0]-'0'==0|| input[0]== ' '){
                 return 0;
             }
@@ -93,14 +93,14 @@ using namespace std;
         }  
 
     // public:
-        Console_Menu:: Console_Menu(){
+        ConsoleMenu:: ConsoleMenu(){
             array_size=0;
             hash_times=0;
             hash1=0;
             hash2=0;
             first_input_size=0;
         } 
-        void Console_Menu::runMenu(){
+        void ConsoleMenu::runMenu(){
             int split_index2;
             string user_input;
             getline(cin, user_input);
@@ -157,18 +157,18 @@ using namespace std;
             */
 
         }  
-        int Console_Menu::GetArray_size(){
+        int ConsoleMenu::GetArray_size(){
             return array_size;
         } 
-        int Console_Menu::GetHashTimes(){
+        int ConsoleMenu::GetHashTimes(){
             return hash_times;
         }  
-        int Console_Menu::GetHash1(){
+        int ConsoleMenu::GetHash1(){
             return hash1;
         } 
-        int Console_Menu::GetHash2(){
+        int ConsoleMenu::GetHash2(){
             return hash2;
         } 
-        int Console_Menu::GetFirstInputSize(){
+        int ConsoleMenu::GetFirstInputSize(){
             return first_input_size;
         }

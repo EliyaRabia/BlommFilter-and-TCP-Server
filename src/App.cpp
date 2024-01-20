@@ -1,7 +1,7 @@
 #include <iostream> 
 #include <string>
 #include "IMenu.h"
-#include "Console_Menu.h"
+#include "ConsoleMenu.h"
 #include "./Option_Menu.cpp"
 #include "./Option1.cpp"
 #include "./Option2.cpp"
@@ -15,9 +15,9 @@ This class runs the program. and uses all the proper classes
 */
         void App::run(){
             // create a menu that get the first input
-            IMenu* a = new Console_Menu();
+            IMenu* a = new ConsoleMenu();
             a->runMenu(); 
-            Console_Menu* cm = dynamic_cast<Console_Menu*>(a);
+            ConsoleMenu* cm = dynamic_cast<ConsoleMenu*>(a);
             int bloom_filter[cm->GetArray_size()]; 
             //initialize the array.
             for (int i = 0; i < cm->GetArray_size(); ++i) {

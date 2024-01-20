@@ -1,12 +1,12 @@
-#ifndef Console_Menu_H
-#define Console_Menu_H
+#ifndef ConsoleMenu_H
+#define ConsoleMenu_H
 #include "IMenu.h"
 #include <string>
 
 using namespace std;  
 
 
-class Console_Menu : public IMenu {
+class ConsoleMenu : public IMenu {
     private:
         int array_size; //array size
         int hash_times; //times of 1 function
@@ -16,7 +16,7 @@ class Console_Menu : public IMenu {
         int firstInputCheck(const string& input);
 
     public :
-        Console_Menu();
+        ConsoleMenu();
         void runMenu();
         int GetArray_size();
         int GetHashTimes();
@@ -25,4 +25,4 @@ class Console_Menu : public IMenu {
         int GetFirstInputSize();
 };
 
-#endif //Console_Menu_H
+#endif //ConsoleMenu_H
