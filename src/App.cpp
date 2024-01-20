@@ -3,8 +3,9 @@
 #include "IMenu.h"
 #include "ConsoleMenu.h"
 #include "OptionMenu.h"
-#include "./Option1.cpp"
-#include "./Option2.cpp"
+#include "IOptions.h"
+#include "Option1.h"
+#include "Option2.h"
 #include <vector>
 #include "App.h"
 

@@ -3,19 +3,11 @@
 #include <vector>
 #include "ICommand.h"
 #include "IOptions.h"
+#include "Option2.h"
 
 using namespace std; 
 
-
-class Option2 : public ICommand, IOptions{
-    private :
-        int first_input_size;
-        int hash_times;
-        int hash1;
-        int hash2; 
-        int array_size; 
-
-        long int DoHash (int digit, string s){
+        long int Option2::DoHash (int digit, string s){
             //Gets a number and a string and does hashing or double hashing depends on the number.
             hash<string> hashF;
             long int val=hashF(s);
@@ -30,7 +22,7 @@ class Option2 : public ICommand, IOptions{
                 return -1;
             }
         }
-        bool checkIfUrlExist(vector<string> urls, string new_url){
+        bool Option2::checkIfUrlExist(vector<string> urls, string new_url){
             for (string i : urls) {
                 if(i.compare(new_url)==0){
                     return true;
@@ -38,20 +30,20 @@ class Option2 : public ICommand, IOptions{
             }
             return false;
         }
-    public:
+
     // Constructor.
-    Option2(int first_input_size,int hash_times,int hash1,int hash2,int array_size): first_input_size(first_input_size),hash_times(hash_times),hash1(hash1),hash2(hash2),array_size(array_size){} 
+    Option2::Option2(int first_input_size,int hash_times,int hash1,int hash2,int array_size): first_input_size(first_input_size),hash_times(hash_times),hash1(hash1),hash2(hash2),array_size(array_size){} 
 
 
-    int getHash1(){
+    int Option2::getHash1(){
         return hash1;
     }
-    int getHash2(){
+    int Option2::getHash2(){
         return hash2;
     }
 
     //check in one place in the bloom filter.
-    void checking1(int* bloom_filter,string url,vector <string>& my_vector) {
+    void Option2::checking1(int* bloom_filter,string url,vector <string>& my_vector) {
     int place;
 
     //need to check the url exists in one place.
@@ -72,7 +64,7 @@ class Option2 : public ICommand, IOptions{
     }
 
     //check in two places in the bloom filter.
-    void checking2(int* bloom_filter,string url,vector <string>& my_vector) {
+    void Option2::checking2(int* bloom_filter,string url,vector <string>& my_vector) {
     //need to check the url exists in two places.
     int place1;
     int place2;
@@ -98,7 +90,7 @@ class Option2 : public ICommand, IOptions{
                 }
 } 
 
-void execute(int* bloom_filter,string url,vector <string>& my_vector) {
+void Option2::execute(int* bloom_filter,string url,vector <string>& my_vector) {
         //checking in the bloom filter one or two times.
         switch (first_input_size) {
         case 2:
@@ -115,7 +107,3 @@ void execute(int* bloom_filter,string url,vector <string>& my_vector) {
             break;
         }
     }
-
-    
-};
-

@@ -3,15 +3,10 @@
 #include <vector>
 #include "ICommand.h"
 #include "IOptions.h"
+#include "Option1.h"
 using namespace std;
-class Option1 : public IOptions{
-    private :
-        int first_input_size;
-        int hash_times;
-        int hash1;
-        int hash2; 
-        int array_size; 
-    long int DoHash (int digit, string s){
+
+    long int Option1::DoHash (int digit, string s){
         //Gets a number and a string and does hashing or double hashing depends on the number.
         hash<string> hashF;
         long int val=hashF(s);
@@ -26,10 +21,9 @@ class Option1 : public IOptions{
             return -1;
         }
     }
-    public : 
-        Option1(int first_input_size,int hash_times,int hash1,int hash2,int array_size): first_input_size(first_input_size),hash_times(hash_times),hash1(hash1),hash2(hash2),array_size(array_size){} 
+        Option1::Option1(int first_input_size,int hash_times,int hash1,int hash2,int array_size): first_input_size(first_input_size),hash_times(hash_times),hash1(hash1),hash2(hash2),array_size(array_size){} 
 
-        void execute(int* bloom_filter,string url,vector <string>& my_vector){
+        void Option1::execute(int* bloom_filter,string url,vector <string>& my_vector){
             if (first_input_size == 2) {
 
                 //in case only one bit in the bloom filter need to be changed.
@@ -53,4 +47,3 @@ class Option1 : public IOptions{
             my_vector.push_back(url);
             
         }   
-};
