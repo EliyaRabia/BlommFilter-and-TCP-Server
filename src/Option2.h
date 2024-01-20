@@ -4,11 +4,11 @@
 #include <string>
 #include <vector>
 #include "ICommand.h"
-#include "IOptions.h"
+#include "Options.h"
 
 using namespace std; 
 
-class Option2 : public ICommand, IOptions{
+class Option2 : public ICommand, Options{
     private :
         int firstInputSize;
         int hashTimes;

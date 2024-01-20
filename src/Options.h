@@ -1,16 +1,16 @@
-#ifndef IOPTIONS_H
-#define IOPTIONS_H
+#ifndef OPTIONS_H
+#define OPTIONS_H
 #include <iostream>
 #include <string>
 
 using namespace std; 
 
-class IOptions {
+class Options {
 public:
     // the abstract class
     long int doHash (int digit, string s);
     
     // Virtual destructor (recommended when dealing with polymorphism)
-    virtual ~IOptions() = default;
+    virtual ~Options() = default;
 };
-#endif // IOPTIONS_H
+#endif // OPTIONS_H
