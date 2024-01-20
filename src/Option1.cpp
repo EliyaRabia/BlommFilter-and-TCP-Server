@@ -2,8 +2,9 @@
 #include <string>
 #include <vector>
 #include "ICommand.h"
+#include "IOptions.h"
 using namespace std;
-class Option1{
+class Option1 : public IOptions{
     private :
         int first_input_size;
         int hash_times;

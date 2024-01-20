@@ -2,14 +2,13 @@
 #include <string>
 #include <vector>
 #include "IMenu.h"
+#include "OptionMenu.h"
 using namespace std;
   
-class Option_Menu : public IMenu {
-    private :
         string user_URL;
         int choice;
 
-        bool checkStringFun(string s){
+        bool OptionMenu::checkStringFun(string s){
             //Gets a string and check if the string is in the form of "1\2 "some url" "
             if (s[0]!='1'&& s[0]!='2'){
                 return false;
@@ -24,13 +23,12 @@ class Option_Menu : public IMenu {
             
         }   
 
-    public : 
     // constructor
-        Option_Menu(){
+        OptionMenu::OptionMenu(){
             user_URL = "";
             choice = -1;
         }
-        void runMenu(){
+        void OptionMenu::runMenu(){
             string user_input;
             getline(cin, user_input);
 
@@ -46,10 +44,9 @@ class Option_Menu : public IMenu {
             user_URL = user_input.substr(split_index + 1);
         }
 
-        int GetChoice(){
+        int OptionMenu::GetChoice(){
             return choice;
         }
-        string GetUserUrl(){
+        string OptionMenu::GetUserUrl(){
             return user_URL;
         }
-};

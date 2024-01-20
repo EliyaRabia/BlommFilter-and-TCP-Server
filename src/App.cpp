@@ -2,7 +2,7 @@
 #include <string>
 #include "IMenu.h"
 #include "ConsoleMenu.h"
-#include "./Option_Menu.cpp"
+#include "OptionMenu.h"
 #include "./Option1.cpp"
 #include "./Option2.cpp"
 #include <vector>
@@ -23,7 +23,7 @@ This class runs the program. and uses all the proper classes
             for (int i = 0; i < cm->GetArray_size(); ++i) {
                 bloom_filter[i] = 0;
             }
-            IMenu* b = new Option_Menu;
+            IMenu* b = new OptionMenu;
             vector <string> my_vector;
             Option1* op1 = new Option1(cm->GetFirstInputSize(),cm->GetHashTimes(),cm->GetHash1(),cm->GetHash2(),cm->GetArray_size()); 
             Option2* op2 = new Option2(cm->GetFirstInputSize(),cm->GetHashTimes(),cm->GetHash1(),cm->GetHash2(),cm->GetArray_size()); 
@@ -31,7 +31,7 @@ This class runs the program. and uses all the proper classes
             while (true)
             {
                 b->runMenu();
-                Option_Menu* pm = dynamic_cast<Option_Menu*>(b);
+                OptionMenu* pm = dynamic_cast<OptionMenu*>(b);
                 // check which option the user chose to run.
                 if(pm->GetChoice()==1){
                     op1->execute(bloom_filter,pm->GetUserUrl(),my_vector); 
