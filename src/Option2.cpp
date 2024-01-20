@@ -28,13 +28,14 @@ using namespace std;
     }
 
     //check in one place in the bloom filter.
-    void Option2::checking1(int* bloomFilter,string url,vector <string>& myVector) {
+    int Option2::checking1(int* bloomFilter,string url,vector <string>& myVector) {
     int place;
 
     //need to check the url exists in one place.
         place = abs((doHash(hashTimes,url))%arraySize);
         if (bloomFilter[place] != 1) {
             cout << "false" << endl;
+            return 0;
         } 
             else {
             // bloom filter was true;
@@ -43,15 +44,18 @@ using namespace std;
             //checking false positive situation.
                 if (checkIfUrlExist(myVector, url)) {
                     cout << "true" << endl;
+                    return 2;
                     } 
                     else {
                         cout << "false" << endl;
+                        return 3;
                     }
             }
+        return 1;
     }
 
     //check in two places in the bloom filter.
-    void Option2::checking2(int* bloomFilter,string url,vector <string>& myVector) {
+    int Option2::checking2(int* bloomFilter,string url,vector <string>& myVector) {
     //need to check the url exists in two places.
     int place1;
     int place2;
@@ -64,6 +68,7 @@ using namespace std;
 
     if (bloomFilter[place1] != 1 || bloomFilter[place2] != 1) {
         cout << "false" << endl;
+        return 0;
         } else {
             // bloom filter was true;
             cout << "true" << " ";
@@ -71,10 +76,13 @@ using namespace std;
             //checking false positive situation.
             if (checkIfUrlExist(myVector, url)) {
                 cout << "true" << endl;
+                return 2;
                 } else {
                     cout << "false" << endl;
+                    return 3;
                     }
                 }
+    return 1;
 } 
 
 void Option2::execute(int* bloomFilter,string url,vector <string>& myVector) {

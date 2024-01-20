@@ -1,5 +1,11 @@
 #include <gtest/gtest.h>
 #include "../src/ConsoleMenu.cpp"
+#include "../src/Option2.cpp"
+#include "../src/Options.cpp"
+#include <string>
+#include <vector>
+
+using namespace std; 
 
 TEST(kelet,pass){
     ConsoleMenu a;
@@ -8,6 +14,116 @@ TEST(kelet,pass){
 TEST(kelet2,pass){
     ConsoleMenu a;
     EXPECT_EQ(a.getFirstInputSize(),0);
+}
+
+//false in input size of 2
+TEST(outPutFor2a, pass){
+    int bloomFilter[8];
+    for(int i=0;i<8;i++){
+        bloomFilter[i]=0;
+    }
+    string url = "www.example.com0";
+    vector <string> myVector;
+    int firstInputSize = 2;
+    int hashTimes = 2;
+    int hash1 = 0;
+    int hash2 = 0;
+    int arraySize = 8;
+    Option2 p2(firstInputSize, hashTimes, hash1, hash2, arraySize);
+    EXPECT_EQ(p2.checking1(bloomFilter, url, myVector),0);
+}
+
+//true false in case of 2 inputs
+TEST(outPutFor2b, pass){
+    int bloomFilter[8];
+    for(int i=0;i<8;i++){
+        bloomFilter[i]=0;
+    }
+    string url = "www.example.com";
+    vector <string> myVector;
+    int firstInputSize = 2;
+    int hashTimes = 2;
+    bloomFilter[1]=1;
+    int hash1 = 0;
+    int hash2 = 0;
+    int arraySize = 8;
+    Option2 p2(firstInputSize, hashTimes, hash1, hash2, arraySize);
+    EXPECT_EQ(p2.checking1(bloomFilter, url, myVector),3);
+}
+
+//true true in case of 2 inputs
+TEST(outPutFor2c, pass){
+    int bloomFilter[8];
+    for(int i=0;i<8;i++){
+        bloomFilter[i]=0;
+    }
+    string url = "www.example.com";
+    vector <string> myVector;
+    myVector.push_back(url);
+    int firstInputSize = 2;
+    int hashTimes = 2;
+    bloomFilter[1]=1;
+    int hash1 = 0;
+    int hash2 = 0;
+    int arraySize = 8;
+    Option2 p2(firstInputSize, hashTimes, hash1, hash2, arraySize);
+    EXPECT_EQ(p2.checking1(bloomFilter, url, myVector),2);
+}
+
+//false in case of 3 inputs
+TEST(outPutFor3a, pass){
+    int bloomFilter[8];
+    for(int i=0;i<8;i++){
+        bloomFilter[i]=0;
+    }
+    string url = "www.example.com0";
+    vector <string> myVector;
+    int firstInputSize = 3;
+    int hashTimes = 0;
+    int hash1 = 1;
+    int hash2 = 2;
+    int arraySize = 8;
+    Option2 p2(firstInputSize, hashTimes, hash1, hash2, arraySize);
+    EXPECT_EQ(p2.checking2(bloomFilter, url, myVector),0);
+}
+
+//true true in case of 3 inputs
+TEST(outPutFor3b, pass){
+    int bloomFilter[8];
+    for(int i=0;i<8;i++){
+        bloomFilter[i]=0;
+    }
+    string url = "www.example.com";
+    vector <string> myVector;
+    int firstInputSize = 3;
+    int hashTimes = 0;
+    bloomFilter[0]=1;
+    bloomFilter[1]=1;
+    int hash1 = 1;
+    int hash2 = 2;
+    int arraySize = 8;
+    Option2 p2(firstInputSize, hashTimes, hash1, hash2, arraySize);
+    EXPECT_EQ(p2.checking2(bloomFilter, url, myVector),3);
+}
+
+//true true in case of 3 inputs
+TEST(outPutFor3c, pass){
+    int bloomFilter[8];
+    for(int i=0;i<8;i++){
+        bloomFilter[i]=0;
+    }
+    string url = "www.example.com";
+    vector <string> myVector;
+    int firstInputSize = 3;
+    int hashTimes = 0;
+    int hash1 = 1;
+    int hash2 = 2;
+    bloomFilter[0]=1;
+    bloomFilter[1]=1;
+    myVector.push_back(url);
+    int arraySize = 8;
+    Option2 p2(firstInputSize, hashTimes, hash1, hash2, arraySize);
+    EXPECT_EQ(p2.checking2(bloomFilter, url, myVector),2);
 }
 
 /*
