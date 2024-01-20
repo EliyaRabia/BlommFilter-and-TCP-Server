@@ -1,23 +1,25 @@
 #include <iostream> 
 #include <string>
-#include "./Console_Menu.cpp"
+#include "IMenu.h"
+#include "Console_Menu.h"
 #include "./Option_Menu.cpp"
 #include "./Option1.cpp"
 #include "./Option2.cpp"
 #include <vector>
-using namespace std;  
+#include "App.h"
+
+using namespace std; 
+
 /*
-This class runs the program. and uses all the proper clsses
+This class runs the program. and uses all the proper classes
 */
-class App{
-    public:   
-        void run(){
+        void App::run(){
             // create a menu that get the first input
             IMenu* a = new Console_Menu();
             a->runMenu(); 
             Console_Menu* cm = dynamic_cast<Console_Menu*>(a);
             int bloom_filter[cm->GetArray_size()]; 
-            //initilaze the array.
+            //initialize the array.
             for (int i = 0; i < cm->GetArray_size(); ++i) {
                 bloom_filter[i] = 0;
             }
@@ -44,5 +46,4 @@ class App{
         delete b;
         delete a;
         }
-}; 
 

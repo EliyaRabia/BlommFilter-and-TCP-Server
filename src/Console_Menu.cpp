@@ -1,24 +1,18 @@
 #include <iostream> // i - input    o - output   stream - data streams for input and output
 #include <string>
 #include <vector>
-#include "./IMenu.h"
+#include "IMenu.h"
+#include "Console_Menu.h"
+
 using namespace std;  
 
-class Console_Menu : public IMenu {
-    private:
-        int array_size; //array size
-        int hash_times; //times of 1 function
-        int hash1; //times of the first of the 2 functions
-        int hash2; //times of the second of the 2 functions
-        int first_input_size; //represnt if using one function or two
-
-        int firstInputCheck(const string& input) {
+        int Console_Menu:: firstInputCheck(const string& input) {
             if(input[0]-'0'==0|| input[0]== ' '){
                 return 0;
             }
             int countNumbers = 0;
             bool inNumber = false;
-            bool isCorrectdigit=false;
+            bool isCorrectDigit=false;
             
             bool isSpaceNow=false;
             int lastDigit=0;
@@ -31,8 +25,8 @@ class Console_Menu : public IMenu {
                 if (c == ' ') { //case of space
                     inNumber = false;
                     isSpaceNow=true;
-                    if(isCorrectdigit==true){
-                        isCorrectdigit=false;
+                    if(isCorrectDigit==true){
+                        isCorrectDigit=false;
                     }
                 } 
 
@@ -46,8 +40,8 @@ class Console_Menu : public IMenu {
                         inNumber = true;
                     }
                     if(countNumbers>=2){  // in case we are in the second or three number of the input
-                        if(isCorrectdigit==false && (c=='2'||c=='1')){ // here we make sure that the second and third input has only one digit: 2 or 1.
-                            isCorrectdigit=true;
+                        if(isCorrectDigit==false && (c=='2'||c=='1')){ // here we make sure that the second and third input has only one digit: 2 or 1.
+                            isCorrectDigit=true;
                             
                         }
 
@@ -98,15 +92,15 @@ class Console_Menu : public IMenu {
 
         }  
 
-    public:
-        Console_Menu(){
+    // public:
+        Console_Menu:: Console_Menu(){
             array_size=0;
             hash_times=0;
             hash1=0;
             hash2=0;
             first_input_size=0;
         } 
-        void runMenu(){
+        void Console_Menu::runMenu(){
             int split_index2;
             string user_input;
             getline(cin, user_input);
@@ -163,19 +157,18 @@ class Console_Menu : public IMenu {
             */
 
         }  
-        int GetArray_size(){
+        int Console_Menu::GetArray_size(){
             return array_size;
         } 
-        int GetHashTimes(){
+        int Console_Menu::GetHashTimes(){
             return hash_times;
         }  
-        int GetHash1(){
+        int Console_Menu::GetHash1(){
             return hash1;
         } 
-        int GetHash2(){
+        int Console_Menu::GetHash2(){
             return hash2;
         } 
-        int GetFirstInputSize(){
+        int Console_Menu::GetFirstInputSize(){
             return first_input_size;
         }
-};
