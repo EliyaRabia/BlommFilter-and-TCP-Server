@@ -1,7 +1,7 @@
 #include <iostream> // i - input    o - output   stream - data streams for input and output
 #include <string>
 #include <vector>
-#include "./IMenu.h"
+#include "IMenu.h"
 using namespace std;
   
 class Option_Menu : public IMenu {

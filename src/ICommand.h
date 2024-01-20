@@ -14,4 +14,4 @@ public:
     // Virtual destructor (recommended when dealing with polymorphism)
     virtual ~ICommand() = default;
 };
-#endif 
+#endif // ICOMMAND_H

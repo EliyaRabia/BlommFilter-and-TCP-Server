@@ -1,11 +1,11 @@
 #include <gtest/gtest.h>
-#include "../src/Console_Menu.cpp"
+#include "../src/ConsoleMenu.cpp"
 TEST(kelet,pass){
-    Console_Menu a;
+    ConsoleMenu a;
     EXPECT_EQ(a.GetArray_size(),0);
 }
 TEST(kelet2,pass){
-    Console_Menu a;
+    ConsoleMenu a;
     EXPECT_EQ(a.GetFirstInputSize(),0);
 }
 /*
