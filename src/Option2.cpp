@@ -6,22 +6,7 @@
 #include "Option2.h"
 
 using namespace std; 
-
-        long int Option2::doHash (int digit, string s){
-            //Gets a number and a string and does hashing or double hashing depends on the number.
-            hash<string> hashF;
-            long int val=hashF(s);
-            if(digit==1){
-                return val;
-            } 
-            if(digit==2){
-                string second = to_string(val);  
-                return hashF(second);
-            }
-            else{
-                return -1;
-            }
-        }
+        
         bool Option2::checkIfUrlExist(vector<string> urls, string newUrl){
             for (string i : urls) {
                 if(i.compare(newUrl)==0){
@@ -30,7 +15,7 @@ using namespace std;
             }
             return false;
         }
-
+    
     // Constructor.
     Option2::Option2(int firstInputSize,int hashTimes,int hash1,int hash2,int arraySize): firstInputSize(firstInputSize),hashTimes(hashTimes),hash1(hash1),hash2(hash2),arraySize(arraySize){} 
 
@@ -47,20 +32,22 @@ using namespace std;
     int place;
 
     //need to check the url exists in one place.
-    place = abs((doHash(hashTimes,url))%arraySize);
-    if (bloomFilter[place] != 1) {
-        cout << "false" << endl;
-        } else {
+        place = abs((doHash(hashTimes,url))%arraySize);
+        if (bloomFilter[place] != 1) {
+            cout << "false" << endl;
+        } 
+            else {
             // bloom filter was true;
-            cout << "true" << " ";
+                cout << "true" << " ";
 
             //checking false positive situation.
-            if (checkIfUrlExist(myVector, url)) {
-                cout << "true" << endl;
-                } else {
-                    cout << "false" << endl;
-                }
-    }
+                if (checkIfUrlExist(myVector, url)) {
+                    cout << "true" << endl;
+                    } 
+                    else {
+                        cout << "false" << endl;
+                    }
+            }
     }
 
     //check in two places in the bloom filter.
@@ -106,4 +93,4 @@ void Option2::execute(int* bloomFilter,string url,vector <string>& myVector) {
         default:
             break;
         }
-    }
+}

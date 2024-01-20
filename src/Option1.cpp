@@ -6,21 +6,7 @@
 #include "Option1.h"
 using namespace std;
 
-    long int Option1::doHash (int digit, string s){
-        //Gets a number and a string and does hashing or double hashing depends on the number.
-        hash<string> hashF;
-        long int val=hashF(s);
-        if(digit==1){
-            return val;
-        } 
-        if(digit==2){
-            string second = to_string(val);  
-            return hashF(second);
-        }
-        else{
-            return -1;
-        }
-    }
+        //constructor
         Option1::Option1(int firstInputSize,int hashTimes,int hash1,int hash2,int arraySize): firstInputSize(firstInputSize),hashTimes(hashTimes),hash1(hash1),hash2(hash2),arraySize(arraySize){} 
 
         void Option1::execute(int* bloomFilter,string url,vector <string>& myVector){

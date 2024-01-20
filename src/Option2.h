@@ -14,10 +14,9 @@ class Option2 : public ICommand, IOptions{
         int hashTimes;
         int hash1;
         int hash2; 
-        int arraySize; 
-        long int doHash (int digit, string s);
+        int arraySize;
         bool checkIfUrlExist(vector<string> urls, string newUrl);
-
+       
     public:
         // Constructor.
         Option2(int firstInputSize,int hashTimes,int hash1,int hash2,int arraySize);

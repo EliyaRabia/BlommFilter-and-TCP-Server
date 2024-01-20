@@ -15,7 +15,6 @@ class Option1 : public IOptions ,ICommand{
         int hash1;
         int hash2; 
         int arraySize; 
-        long int doHash (int digit, string s);
 
     public : 
         Option1(int firstInputSize,int hashTimes,int hash1,int hash2,int arraySize);
