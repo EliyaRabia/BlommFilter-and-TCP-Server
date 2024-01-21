@@ -128,7 +128,26 @@ TEST(outPutFor3c, pass){
 
 //these are old tests that we used before refactoring to classes.
 /*
-#include "../src/functions.cpp" // here we include the code to be tested
+// here is the code that we used to check our code by TDD.
+
+//here we do the sanity Test.
+TEST(AppTest, Getters) {
+App app();
+EXPECT_EQ(app.run(), 1);
+EXPECT_EQ(app.runMenu(),2);
+}
+
+
+
+// here we check the tests.
+
+#include "../src/functions.cpp" 
+TEST(doHashTest, pass) {
+EXPECT_EQ(doHash("www.example.com"), 1);
+}
+TEST(doDoubleHashTest2, pass) {
+EXPECT_EQ(doHash("www.example.com"), 2);
+}
 TEST(keletTest, failedTest) {
 EXPECT_EQ(firstInputCheck("234  876a"), 0);
 }
