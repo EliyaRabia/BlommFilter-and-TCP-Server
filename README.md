@@ -10,7 +10,7 @@
 
 # Our process
 First, we created one file where the code works in it's simplest form, we used simple, and sanity tests
-<br//>
+<br/>
 that will give a general indication of how the code should be.
 <br/>
 After that, we started the solid principles type refactoring phase where we split the code into
