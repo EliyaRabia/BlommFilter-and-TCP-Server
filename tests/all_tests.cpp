@@ -3,12 +3,64 @@
 #include "../src/Option1.cpp"
 #include "../src/Option2.cpp"
 #include "../src/Options.cpp"
+#include "../src/OptionMenu.cpp"
 #include "../src/Options.h"
 #include <string>
 #include <vector>
 
+/*
+this file include all the tests that we used while we worked on our project.
+*/
 using namespace std; 
 
+TEST(ChechFirstInput1,pass){
+    ConsoleMenu a;
+    EXPECT_EQ(a.firstInputCheck("8 1"),1);
+}
+TEST(ChechFirstInput2,pass){
+    ConsoleMenu a;
+    EXPECT_EQ(a.firstInputCheck("8 1 1 1 1 1 1"),1);
+}
+TEST(ChechFirstInput3,pass){
+    ConsoleMenu a;
+    EXPECT_EQ(a.firstInputCheck("8 1 2"),3);
+}
+TEST(ChechFirstInput4,pass){
+    ConsoleMenu a;
+    EXPECT_EQ(a.firstInputCheck("8 2"),2);
+}
+TEST(ChechFirstInput5,pass){
+    ConsoleMenu a;
+    EXPECT_EQ(a.firstInputCheck("8 2 2 2 2 2 2"),2);
+}
+TEST(ChechFirstInput6,pass){
+    ConsoleMenu a;
+    EXPECT_EQ(a.firstInputCheck("8 2 1 2 1 2 2"),3);
+}
+TEST(ChechFirstInput7,failed){
+    ConsoleMenu a;
+    EXPECT_EQ(a.firstInputCheck("8 2 1 2 100 2 2"),0);
+}
+TEST(ChechFirstInput8,failed){
+    ConsoleMenu a;
+    EXPECT_EQ(a.firstInputCheck("      8 1 2"),0);
+}
+TEST(ChechFirstInput9,failed){
+    ConsoleMenu a;
+    EXPECT_EQ(a.firstInputCheck("8      1 2"),0);
+}
+TEST(CheckString1,pass){
+    OptionMenu a;
+    EXPECT_EQ(a.checkStringFun("1 www"),1);
+} 
+TEST(CheckString2,failed){
+    OptionMenu a;
+    EXPECT_EQ(a.checkStringFun("3 www"),0);
+}
+TEST(CheckString3,failed){
+    OptionMenu a;
+    EXPECT_EQ(a.checkStringFun("2   www"),0);
+}
 TEST(kelet,pass){
     ConsoleMenu a;
     EXPECT_EQ(a.getArraySize(),0);
@@ -207,12 +259,7 @@ TEST(option1Test3, pass){
 /*
 // here is the code that we used to check our code by TDD.
 
-//here we do the sanity Test.
-TEST(AppTest, Getters) {
-App app();
-EXPECT_EQ(app.run(), 1);
-EXPECT_EQ(app.runMenu(),2);
-}
+
 
 
 
@@ -237,13 +284,6 @@ EXPECT_EQ(firstInputCheck("234  2"), 2);
 TEST(keletTest3, passedTest) {
 EXPECT_EQ(firstInputCheck("234  2 1"), 3);
 }
-
-TEST(UrlTest, basicTest) {
-EXPECT_EQ(isCustomURL("aa"), 0);
-}
-TEST(UrlTest2, basicTest2) {
-EXPECT_EQ(isCustomURL("www.example.com1"), 1);
-} 
 
 TEST(KeletTest4, passedTest1) {
 EXPECT_EQ(checkStringFun("ofek"), 0);

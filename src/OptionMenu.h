@@ -11,13 +11,13 @@ class OptionMenu : public IMenu {
     private:
         string userURL;
         int choice;
-        bool checkStringFun(string s);
 
     public :
         OptionMenu();
         void runMenu();
         int getChoice();
         string getUserUrl();
+        bool checkStringFun(string s);
 };
 
 #endif //OptionMenu_H

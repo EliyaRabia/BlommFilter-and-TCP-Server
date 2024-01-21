@@ -4,7 +4,9 @@
 #include "ICommand.h"
 #include "Options.h"
 #include "Option2.h"
-
+/*
+this class represents the option 2, when the user checks if the url is already in the bloom filter.
+*/
 using namespace std; 
         
         bool Option2::checkIfUrlExist(vector<string> urls, string newUrl){
@@ -27,10 +29,11 @@ using namespace std;
         return hash2;
     }
 
-    //check in one place in the bloom filter.
+    /*
+    This method check in one place in the bloom filter.
+    */
     int Option2::checking1(int* bloomFilter,string url,vector <string>& myVector) {
     int place;
-
     //need to check the url exists in one place.
         place = abs((doHash(hashTimes,url))%arraySize);
         if (bloomFilter[place] != 1) {
@@ -40,7 +43,6 @@ using namespace std;
             else {
             // bloom filter was true;
                 cout << "true" << " ";
-
             //checking false positive situation.
                 if (checkIfUrlExist(myVector, url)) {
                     cout << "true" << endl;
@@ -54,18 +56,17 @@ using namespace std;
         return 1;
     }
 
-    //check in two places in the bloom filter.
+    /*
+    This method check in two places in the bloom filter.
+    */
     int Option2::checking2(int* bloomFilter,string url,vector <string>& myVector) {
     //need to check the url exists in two places.
     int place1;
     int place2;
-
     //the first place.
     place1 = abs((doHash(hash1,url))%arraySize);
-
     //the second place.
     place2 = abs((doHash(hash2,url))%arraySize);
-
     if (bloomFilter[place1] != 1 || bloomFilter[place2] != 1) {
         cout << "false" << endl;
         return 0;
@@ -84,19 +85,20 @@ using namespace std;
                 }
     return 1;
 } 
-
+/*
+this method runs the second option.
+*/
 void Option2::execute(int* bloomFilter,string url,vector <string>& myVector) {
         //checking in the bloom filter one or two times.
+        int result;
         switch (firstInputSize) {
         case 2:
             //need to check the url exists in one place.
-            checking1(bloomFilter, url, myVector);
-                
+            result = checking1(bloomFilter, url, myVector);   
             break;
         case 3:
             //need to check the url exists in two places.
-            checking2(bloomFilter, url, myVector);
-            
+            result = checking2(bloomFilter, url, myVector);
             break;
         default:
             break;

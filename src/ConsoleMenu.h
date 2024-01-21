@@ -13,7 +13,6 @@ class ConsoleMenu : public IMenu {
         int hash1; //times of the first of the 2 functions
         int hash2; //times of the second of the 2 functions
         int firstInputSize; //represent if using one function or two
-        int firstInputCheck(const string& input);
 
     public :
         ConsoleMenu();
@@ -23,6 +22,7 @@ class ConsoleMenu : public IMenu {
         int getHash1();
         int getHash2();
         int getFirstInputSize();
+        int firstInputCheck(const string& input);
 };
 
 #endif //ConsoleMenu_H

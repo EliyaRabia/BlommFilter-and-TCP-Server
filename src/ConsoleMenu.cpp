@@ -1,11 +1,24 @@
-#include <iostream> // i - input    o - output   stream - data streams for input and output
+#include <iostream>
 #include <string>
 #include <vector>
 #include "IMenu.h"
 #include "ConsoleMenu.h"
 
-using namespace std;  
+using namespace std; 
+/*
+this class runs the first menu of the task, when the user chooses his arr size , and his hash functions.
+*/ 
 
+        ConsoleMenu:: ConsoleMenu(){
+            arraySize=0;
+            hashTimes=0;
+            hash1=0;
+            hash2=0;
+            firstInputSize=0;
+        } 
+        /*
+        this method checks the user input, if its vaild or not.
+        */
         int ConsoleMenu:: firstInputCheck(const string& input) {
             if(input[0]-'0'==0|| input[0]== ' '){
                 return 0;
@@ -94,15 +107,9 @@ using namespace std;
             }
 
         }  
-
-    // public:
-        ConsoleMenu:: ConsoleMenu(){
-            arraySize=0;
-            hashTimes=0;
-            hash1=0;
-            hash2=0;
-            firstInputSize=0;
-        } 
+        /*
+        this method gets the first input from the user, and initialize the variables.
+        */
         void ConsoleMenu::runMenu(){
             int splitIndex2;
             string userInput;
@@ -130,6 +137,9 @@ using namespace std;
             }  
 
         }  
+        /*
+        getters for the variables.
+        */
         int ConsoleMenu::getArraySize(){
             return arraySize;
         } 

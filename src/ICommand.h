@@ -5,6 +5,9 @@
 #include <vector>
 
 using namespace std; 
+/*
+interface of commands the user have.
+*/
 
 class ICommand {
 public:
