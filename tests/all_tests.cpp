@@ -1,7 +1,9 @@
 #include <gtest/gtest.h>
 #include "../src/ConsoleMenu.cpp"
+#include "../src/Option1.cpp"
 #include "../src/Option2.cpp"
 #include "../src/Options.cpp"
+#include "../src/Options.h"
 #include <string>
 #include <vector>
 
@@ -124,6 +126,81 @@ TEST(outPutFor3c, pass){
     int arraySize = 8;
     Option2 p2(firstInputSize, hashTimes, hash1, hash2, arraySize);
     EXPECT_EQ(p2.checking2(bloomFilter, url, myVector),2);
+}
+
+//doHash tests.
+TEST(doHash1Test1, pass){
+    Options options;
+    EXPECT_EQ(options.doHash(1,"www.example.com0"),8231510004620773819);
+}
+TEST(doHash2Test1, pass){
+    Options options;
+    EXPECT_EQ(options.doHash(2,"www.example.com0"),6657855685155196946);
+}
+TEST(doHash1Test2, pass){
+    Options options;
+    EXPECT_EQ(options.doHash(1,"www.example.com11"),8170639658965728443);
+}
+TEST(doHash2Test2, pass){
+    Options options;
+    EXPECT_EQ(options.doHash(2,"www.example.com11"),8961118054305463587);
+}
+TEST(doHash1Test3, pass){
+    Options options;
+    EXPECT_EQ(options.doHash(1,"www.example.com4"),2204681767864682784);
+}
+TEST(doHash2Test3, pass){
+    Options options;
+    EXPECT_EQ(options.doHash(2,"www.example.com4"),1700393512410395922);
+}
+
+//option1 tests.
+TEST(option1Test1, pass){
+    vector <string> myVector;
+    int bloomFilter[8];
+    for(int i=0;i<8;i++){
+        bloomFilter[i]=0;
+    }
+    string url = "www.example.com0";
+    int firstInputSize = 3;
+    int hashTimes = 0;
+    int hash1 = 1;
+    int hash2 = 2;
+    int arraySize = 8;
+    Option1 option1(firstInputSize, hashTimes, hash1, hash2, arraySize);
+    EXPECT_EQ(option1.pushToArray(bloomFilter,url,myVector),1);
+}
+//option1 tests.
+TEST(option1Test2, pass){
+    vector <string> myVector;
+    int bloomFilter[8];
+    for(int i=0;i<8;i++){
+        bloomFilter[i]=0;
+    }
+    string url = "www.example.com11";
+    int firstInputSize = 3;
+    int hashTimes = 0;
+    int hash1 = 1;
+    int hash2 = 2;
+    int arraySize = 8;
+    Option1 option1(firstInputSize, hashTimes, hash1, hash2, arraySize);
+    EXPECT_EQ(option1.pushToArray(bloomFilter,url,myVector),1);
+}
+//option1 tests.
+TEST(option1Test3, pass){
+    vector <string> myVector;
+    int bloomFilter[8];
+    for(int i=0;i<8;i++){
+        bloomFilter[i]=0;
+    }
+    string url = "www.example.com4";
+    int firstInputSize = 2;
+    int hashTimes = 2;
+    int hash1 = 0;
+    int hash2 = 0;
+    int arraySize = 8;
+    Option1 option1(firstInputSize, hashTimes, hash1, hash2, arraySize);
+    EXPECT_EQ(option1.pushToArray(bloomFilter,url,myVector),1);
 }
 
 //these are old tests that we used before refactoring to classes.

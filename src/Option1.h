@@ -19,6 +19,7 @@ class Option1 : public Options ,ICommand{
     public : 
         Option1(int firstInputSize,int hashTimes,int hash1,int hash2,int arraySize);
         void execute(int* bloomFilter,string url,vector <string>& myVector);
+        int pushToArray(int* bloomFilter,string url,vector <string>& myVector);
 
 };
 #endif // OPTION1_H
