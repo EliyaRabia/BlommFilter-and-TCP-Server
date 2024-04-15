@@ -16,6 +16,7 @@ This class runs the program. and uses all the proper classes
 */
         void App::run(){
             // create a menu that get the first input
+
             IMenu* a = new ConsoleMenu();
             a->runMenu(); 
             ConsoleMenu* cm = dynamic_cast<ConsoleMenu*>(a);
@@ -24,6 +25,7 @@ This class runs the program. and uses all the proper classes
             for (int i = 0; i < cm->getArraySize(); ++i) {
                 bloomFilter[i] = 0;
             }
+
             IMenu* b = new OptionMenu;
             vector <string> myVector;
             Option1* op1 = new Option1(cm->getFirstInputSize(),cm->getHashTimes(),cm->getHash1(),cm->getHash2(),cm->getArraySize()); 
