@@ -12,13 +12,16 @@ class BloomFilter {
     int arraySize;
     int result;
     int hash1, hash2;
-    Option1* op1;
-    Option2* op2;
+
 
 public:
     BloomFilter();
 
-    void BloomFilter::execute(int choice, const std::string url);
+    int execute(int choice, const std::string url);
+    bool checkIfUrlExist(std::string newUrl);
+    long int doHash(int digit, std::string s);
+    bool pushToArray(std::string url);
+    int checking2(std::string url);
 
     std::vector<std::string> getStringVector();
     int getArraySize();

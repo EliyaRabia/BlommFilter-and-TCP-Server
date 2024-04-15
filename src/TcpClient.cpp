@@ -24,28 +24,28 @@ int main()
     {
         perror("error connecting to server");
     }
-    char data_addr[] = "www.google.com";
+    std::string line;
+    std::getline(std::cin, line);
+    const char* data_addr = line.c_str();
     int data_len = strlen(data_addr);
     int sent_bytes = send(sock, data_addr, data_len,0);
     if (sent_bytes < 0)
     {
+        perror("error sending to server");
+    }
+
+    char buffer[4096];
+    int expected_data_len = sizeof(buffer);
+    int read_bytes = recv(sock, buffer, expected_data_len,0);
+    if (read_bytes == 0)
+    {
+        // connection is closed 
+    }
+    else if (read_bytes < 0)
+    {
         // error 
     }
-        char buffer[4096];
-        int expected_data_len = sizeof(buffer);
-        int read_bytes = recv(sock, buffer, expected_data_len,0);
-        if (read_bytes == 0)
-        {
-            // connection is closed 
-        }
-        else if (read_bytes < 0)
-        {
-            // error 
-        }
-        else
-        {
-            cout << buffer;
-        }
-        close(sock);
-        return 0;
-        }
+    
+    close(sock);
+    return 0;
+    }

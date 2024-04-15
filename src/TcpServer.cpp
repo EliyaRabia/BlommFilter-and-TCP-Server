@@ -5,10 +5,13 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <string.h>
+#include "BloomFilter.h"
+
 using namespace std;
 int main()
 {
     const int server_port = 5555;
+    BloomFilter* bloomFilter = new BloomFilter();
     int sock = socket(AF_INET, SOCK_STREAM,0);
     if (sock < 0)
     {
@@ -27,34 +30,44 @@ int main()
     {
         perror("error listening to a socket");
     }
-    struct sockaddr_in client_sin;
-    unsigned int addr_len = sizeof(client_sin);
-    int client_sock = accept(sock,(struct sockaddr*)&client_sin,&addr_len);
-    if (client_sock <
-        0)
-    {
-        perror("error accepting client");
-    }
-    char buffer[4096];
-    int expected_data_len = sizeof(buffer);
-    int read_bytes = recv(client_sock, buffer, expected_data_len,0);
-    if (read_bytes == 0)
-    {
-        // connection is closed 
-    }
-        else if (read_bytes < 0)
-        {
-            // error 
-        }
-            else
+    while (true){
+        struct sockaddr_in client_sin;
+            unsigned int addr_len = sizeof(client_sin);
+            int client_sock = accept(sock,(struct sockaddr*)&client_sin,&addr_len);
+            if (client_sock <
+                0)
             {
-                cout << buffer;
+                perror("error accepting client");
             }
-            int sent_bytes = send(client_sock, buffer, read_bytes,0);
-            if (sent_bytes < 0)
+            char buffer[4096];
+            int expected_data_len = sizeof(buffer);
+            int read_bytes = recv(client_sock, buffer, expected_data_len,0);
+            while(read_bytes > 0){
+                std::string buffer_str(buffer);
+                int splitIndex = buffer_str.find(' ');
+                std::string choice_str = buffer_str.substr(0, splitIndex);
+                std::string url = buffer_str.substr(splitIndex+1);
+                
+                int choice = std::stoi(choice_str);
+                bloomFilter->execute(choice, url);
+
+                int sent_bytes = send(client_sock, buffer, read_bytes,0);
+                    if (sent_bytes < 0)
+                    {
+                        perror("error sending to client");
+                    }
+            read_bytes = recv(client_sock, buffer, expected_data_len,0);
+            }
+            if (read_bytes == 0)
             {
-                perror("error sending to client");
+                // connection is closed 
             }
-            close(sock);
-            return 0;
+                else {
+                    // error 
+                }
+            close(client_sock);
+    }
+    
+    close(sock);
+    return 0;
 }
