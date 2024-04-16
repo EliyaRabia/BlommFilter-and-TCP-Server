@@ -13,6 +13,20 @@ BloomFilter::BloomFilter() : arraySize(128), result(false) {
     hash2 =2;
 }
 
+// BloomFilter::BloomFilter(int size, int hash1 , int hash2) : result(false) {
+//     bloomFilter = new int[size]; // Allocate memory for bloomFilter
+//     for(int i = 0; i < size; i++) {
+//         bloomFilter[i] = 0;
+//     }
+//     arraySize = size;
+//     this->hash1 = hash1;
+//     this->hash2 = hash2;
+// }
+
+// BloomFilter::~BloomFilter() {
+//     delete[] bloomFilter; // Deallocate memory when the object is destroyed
+// }
+
 int BloomFilter::execute(int choice, const std::string url) {
     if(choice == 1){
         this->result = this->pushToArray(url); 

@@ -6,6 +6,19 @@
 #include "Option1.h"
 #include "Option2.h"
 
+
+// class BloomFilter {
+//     std::vector<std::string> stringVector;
+//     int arraySize;
+//     int hash1;
+//     int hash2;
+//     bool result;
+//     int* bloomFilter;
+
+// public:
+//     BloomFilter(int size, int hash1, int hash2);
+//     ~BloomFilter();
+
 class BloomFilter {
     int bloomFilter[128]; 
     std::vector<std::string> stringVector;
