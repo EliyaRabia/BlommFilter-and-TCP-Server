@@ -5,9 +5,48 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <string.h>
+#include <thread>
 #include "BloomFilter.h"
 
 using namespace std;
+
+void handle_client(int client_sock, BloomFilter* bloomFilter) {
+    char buffer[4096];
+    int expected_data_len = sizeof(buffer) - 1; // Leave space for null terminator
+    std::string buffer_str;
+    int read_bytes = recv(client_sock, buffer, expected_data_len, 0);
+    while(read_bytes > 0){
+        buffer[read_bytes] = '\0'; // Null-terminate the data
+        buffer_str += buffer; // Append data to buffer_str
+
+        // Process complete messages
+        size_t newline_pos;
+        while ((newline_pos = buffer_str.find('\n')) != std::string::npos) {
+            std::string message = buffer_str.substr(0, newline_pos);
+            buffer_str = buffer_str.substr(newline_pos + 1);
+
+            int splitIndex = message.find(' ');
+            if (splitIndex != std::string::npos) {
+                std::string choice_str = message.substr(0, splitIndex);
+                std::string url = message.substr(splitIndex+1);
+
+                try {
+                    int choice = std::stoi(choice_str);
+                    bloomFilter->execute(choice, url);
+                } catch (std::invalid_argument& e) {
+                    std::cerr << "Invalid argument: " << e.what() << '\n';
+                } catch (std::out_of_range& e) {
+                    std::cerr << "Out of range: " << e.what() << '\n';
+                }
+            } else {
+                std::cerr << "Invalid input format\n";
+            }
+        }
+
+        read_bytes = recv(client_sock, buffer, expected_data_len, 0);
+    }
+    close(client_sock);
+}
 
 int main()
 {
@@ -39,48 +78,9 @@ int main()
         {
             perror("error accepting client");
         }
-        char buffer[4096];
-        int expected_data_len = sizeof(buffer) - 1; // Leave space for null terminator
-        std::string buffer_str;
-        int read_bytes = recv(client_sock, buffer, expected_data_len, 0);
-        while(read_bytes > 0){
-            buffer[read_bytes] = '\0'; // Null-terminate the data
-            buffer_str += buffer; // Append data to buffer_str
 
-            // Process complete messages
-            size_t newline_pos;
-            while ((newline_pos = buffer_str.find('\n')) != std::string::npos) {
-                std::string message = buffer_str.substr(0, newline_pos);
-                buffer_str = buffer_str.substr(newline_pos + 1);
-
-                int splitIndex = message.find(' ');
-                if (splitIndex != std::string::npos) {
-                    std::string choice_str = message.substr(0, splitIndex);
-                    std::string url = message.substr(splitIndex+1);
-
-                    try {
-                        int choice = std::stoi(choice_str);
-                        bloomFilter->execute(choice, url);
-                    } catch (std::invalid_argument& e) {
-                        std::cerr << "Invalid argument: " << e.what() << '\n';
-                    } catch (std::out_of_range& e) {
-                        std::cerr << "Out of range: " << e.what() << '\n';
-                    }
-                } else {
-                    std::cerr << "Invalid input format\n";
-                }
-            }
-
-            read_bytes = recv(client_sock, buffer, expected_data_len, 0);
-        }
-        if (read_bytes == 0)
-        {
-            // connection is closed 
-        }
-        else {
-            // error 
-        }
-        close(client_sock);
+        std::thread client_thread(handle_client, client_sock, bloomFilter);
+        client_thread.detach();
     }
     
     close(sock);
