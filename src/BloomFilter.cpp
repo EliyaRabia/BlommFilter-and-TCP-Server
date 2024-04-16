@@ -57,6 +57,7 @@ bool BloomFilter::pushToArray(string url){
         int place2 = abs((doHash(hash2,url))%arraySize);
         bloomFilter[place2]=1;
         // adding url to the vector.
+        cout << url << endl;
         stringVector.push_back(url);
         return 1;
     }
