@@ -4,7 +4,7 @@
 class IMenu {
 public:
     // the abstract class
-    virtual void runMenu() = 0;
+    virtual void runMenu(std::string userInput) = 0;
 
     // Virtual destructor (recommended when dealing with polymorphism)
     virtual ~IMenu() = default;

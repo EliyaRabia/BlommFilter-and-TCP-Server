@@ -6,7 +6,7 @@
 using namespace std;  
 
 
-class ConsoleMenu : public IMenu {
+class ConsoleMenu : public IMenu{
     private:
         int arraySize; //array size
         int hashTimes; //times of 1 function
@@ -16,7 +16,7 @@ class ConsoleMenu : public IMenu {
 
     public :
         ConsoleMenu();
-        void runMenu();
+        void runMenu(string userInput);
         int getArraySize();
         int getHashTimes();
         int getHash1();
