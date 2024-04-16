@@ -6,7 +6,7 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/src/client",
+            "program": "${workspaceFolder}/src/TcpServer",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
