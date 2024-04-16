@@ -5,14 +5,6 @@
 
 using namespace std;
 
-// BloomFilter::BloomFilter() : arraySize(128), result(false) {
-//     for(int i = 0; i < 128; i++) {
-//         bloomFilter[i] = 0;
-//     }
-//     hash1 =1;
-//     hash2 =2;
-// }
-
 BloomFilter::BloomFilter(int size, int hash1 , int hash2) : result(false) {
     bloomFilter = new int[size]; // Allocate memory for bloomFilter
     cout << "BloomFilter created with size: " << size << endl;

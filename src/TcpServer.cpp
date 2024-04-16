@@ -129,17 +129,19 @@ int main()
     while (true){
         cout << "Waiting for client to connect" << endl;
         struct sockaddr_in client_sin;
+        cout << "hey1" << endl;
         unsigned int addr_len = sizeof(client_sin);
+        cout << "hey2" << endl;
         int client_sock = accept(sock,(struct sockaddr*)&client_sin,&addr_len);
-        cout << "hey" << endl;
+        cout << "hey3" << endl;
         if (client_sock < 0)
         {
             perror("error accepting client");
-            continue; // Skip to the next iteration of the loop
+            //continue; // Skip to the next iteration of the loop
         }
         cout << "Client connected" << endl;
 
-        std::thread client_thread(handle_client, client_sock, std::ref(bloomFilter));
+        handle_client(client_sock, std::ref(bloomFilter));
         client_thread.detach();
     }
     
