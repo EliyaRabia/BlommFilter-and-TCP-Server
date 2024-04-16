@@ -37,9 +37,9 @@ This class runs the program. and uses all the proper classes
                 OptionMenu* pm = dynamic_cast<OptionMenu*>(b);
                 // check which option the user chose to run.
                 if(pm->getChoice()==1){
-                    op1->execute(bloomFilter,pm->getUserUrl(),myVector); 
+                    int res1 = op1->execute(bloomFilter,pm->getUserUrl(),myVector); 
                 } else {
-                    op2->execute(bloomFilter,pm->getUserUrl(),myVector);
+                    int res2 = op2->execute(bloomFilter,pm->getUserUrl(),myVector);
                 }
                 
             }

@@ -88,9 +88,9 @@ using namespace std;
 /*
 this method runs the second option.
 */
-void Option2::execute(int* bloomFilter,string url,vector <string>& myVector) {
+int Option2::execute(int* bloomFilter,string url,vector <string>& myVector) {
         //checking in the bloom filter one or two times.
-        int result;
+        int result=-1;
         switch (firstInputSize) {
         case 2:
             //need to check the url exists in one place.
@@ -102,5 +102,6 @@ void Option2::execute(int* bloomFilter,string url,vector <string>& myVector) {
             break;
         default:
             break;
-        }
+        } 
+        return result;
 }

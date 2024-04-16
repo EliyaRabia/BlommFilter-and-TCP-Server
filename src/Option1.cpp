@@ -24,6 +24,7 @@ this class represents the option 1, of insterting a url to the bloom filter.
                 bloomFilter[place1]=1; 
                 // adding url to the vector.
                 myVector.push_back(url);
+                cout << url << endl;
                 return 1;
             } 
             else {
@@ -37,6 +38,7 @@ this class represents the option 1, of insterting a url to the bloom filter.
                 bloomFilter[place2]=1;
                 // adding url to the vector.
                 myVector.push_back(url);
+                cout << url << endl;
                 return 1;
             }
 
@@ -45,7 +47,8 @@ this class represents the option 1, of insterting a url to the bloom filter.
         /*
         this method runs the first option.
         */
-        void Option1::execute(int* bloomFilter,string url,vector <string>& myVector){
+        int Option1::execute(int* bloomFilter,string url,vector <string>& myVector){
             // we wanted to TDD the function, so we sent it to pushToArray which return a value
             int result  = pushToArray(bloomFilter,url,myVector);
+            return result;
         }   

@@ -35,9 +35,9 @@ This class represents the second menu, when the user choose option 1 or 2, and c
         /*
         This method runs the second menu , and gets what the user want to do next.
         */ 
-        void OptionMenu::runMenu(){
-            string userInput;
-            getline(cin, userInput);
+        void OptionMenu::runMenu(string userInput){
+            //string userInput;
+            //getline(cin, userInput);
 
             //need to check the input
             while (!checkStringFun(userInput)) {

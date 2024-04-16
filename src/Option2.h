@@ -26,7 +26,7 @@ class Option2 : public ICommand, Options{
         int checking1(int* bloomFilter,string url,vector <string>& myVector);
         //return 0 in case of false, 2 true true, 3 true false, error 1
         int checking2(int* bloomFilter,string url,vector <string>& myVector);
-        void execute(int* bloomFilter,string url,vector <string>& myVector);
+        int execute(int* bloomFilter,string url,vector <string>& myVector);
 
 };
 #endif // OPTION2_H
