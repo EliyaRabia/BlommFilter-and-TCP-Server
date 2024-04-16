@@ -5,27 +5,32 @@
 
 using namespace std;
 
-BloomFilter::BloomFilter() : arraySize(128), result(false) {
-    for(int i = 0; i < 128; i++) {
-        bloomFilter[i] = 0;
-    }
-    hash1 =1;
-    hash2 =2;
-}
-
-// BloomFilter::BloomFilter(int size, int hash1 , int hash2) : result(false) {
-//     bloomFilter = new int[size]; // Allocate memory for bloomFilter
-//     for(int i = 0; i < size; i++) {
+// BloomFilter::BloomFilter() : arraySize(128), result(false) {
+//     for(int i = 0; i < 128; i++) {
 //         bloomFilter[i] = 0;
 //     }
-//     arraySize = size;
-//     this->hash1 = hash1;
-//     this->hash2 = hash2;
+//     hash1 =1;
+//     hash2 =2;
 // }
 
-// BloomFilter::~BloomFilter() {
-//     delete[] bloomFilter; // Deallocate memory when the object is destroyed
-// }
+BloomFilter::BloomFilter(int size, int hash1 , int hash2) : result(false) {
+    bloomFilter = new int[size]; // Allocate memory for bloomFilter
+    cout << "BloomFilter created with size: " << size << endl;
+    cout << "Hash1: " << hash1 << endl;
+    cout << "Hash2: " << hash2 << endl;
+    cout << "before for" << endl;
+    for(int i = 0; i < size; i++) {
+        bloomFilter[i] = 0;
+    }
+    cout << "after for" << endl;
+    arraySize = size;
+    this->hash1 = hash1;
+    this->hash2 = hash2;
+}
+
+BloomFilter::~BloomFilter() {
+    delete[] bloomFilter; // Deallocate memory when the object is destroyed
+}
 
 int BloomFilter::execute(int choice, const std::string url) {
     if(choice == 1){

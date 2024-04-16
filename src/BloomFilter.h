@@ -7,28 +7,28 @@
 #include "Option2.h"
 
 
-// class BloomFilter {
-//     std::vector<std::string> stringVector;
-//     int arraySize;
-//     int hash1;
-//     int hash2;
-//     bool result;
-//     int* bloomFilter;
-
-// public:
-//     BloomFilter(int size, int hash1, int hash2);
-//     ~BloomFilter();
-
 class BloomFilter {
-    int bloomFilter[128]; 
     std::vector<std::string> stringVector;
     int arraySize;
-    int result;
-    int hash1, hash2;
-
+    int hash1;
+    int hash2;
+    bool result;
+    int* bloomFilter;
 
 public:
-    BloomFilter();
+    BloomFilter(int size, int hash1, int hash2);
+    ~BloomFilter();
+
+// class BloomFilter {
+//     int bloomFilter[128]; 
+//     std::vector<std::string> stringVector;
+//     int arraySize;
+//     int result;
+//     int hash1, hash2;
+
+
+// public:
+//     BloomFilter();
 
     int execute(int choice, const std::string url);
     bool checkIfUrlExist(std::string newUrl);
