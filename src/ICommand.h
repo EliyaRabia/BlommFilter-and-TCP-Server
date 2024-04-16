@@ -12,7 +12,7 @@ interface of commands the user have.
 class ICommand {
 public:
     // the abstract class
-    virtual void execute(int* bloomFilter,string url,vector <string>& myVector) = 0;
+    virtual int execute(int* bloomFilter,string url,vector <string>& myVector) = 0;
 
     // Virtual destructor (recommended when dealing with polymorphism)
     virtual ~ICommand() = default;

@@ -8,9 +8,10 @@
 #include <thread>
 #include "BloomFilter.h"
 #include "ConsoleMenu.h"
+#include "OptionMenu.h"
 
 using namespace std;
-
+int fis;
 void initialize_client(int client_sock, BloomFilter*& bloomFilter){
     char buffer[4096];
     int expected_data_len = sizeof(buffer) - 1; // Leave space for null terminator
@@ -37,6 +38,7 @@ void initialize_client(int client_sock, BloomFilter*& bloomFilter){
             //int splitIndex2 = rest.find(' ');
             int hash1 = consoleMenu.getHash1();
             int hash2 = consoleMenu.getHash2();
+            fis = consoleMenu.getFirstInputSize();
             try {
                 bloomFilter = new BloomFilter(size,hash1,hash2,hashTimes);
                 cout << "Bloom filter initialized with size " << size << " and hash functions " << hash1 << " and " << hash2 << '\n';
@@ -72,23 +74,35 @@ void handle_client(int client_sock, BloomFilter* bloomFilter) {
         while ((newline_pos = buffer_str.find('\n')) != std::string::npos) {
             std::string message = buffer_str.substr(0, newline_pos);
             buffer_str = buffer_str.substr(newline_pos + 1);
-
-            int splitIndex = message.find(' ');
-            if (splitIndex != std::string::npos) {
-                std::string choice_str = message.substr(0, splitIndex);
-                std::string url = message.substr(splitIndex+1);
-
-                try {
-                    int choice = std::stoi(choice_str);
-                    bloomFilter->execute(choice, url);
+            OptionMenu optionMenu = OptionMenu();
+            optionMenu.runMenu(message);
+            try {
+                    int choice = optionMenu.getChoice();
+                    std::string url = optionMenu.getUserUrl(); 
+                    bloomFilter->execute(choice,url,fis); 
                 } catch (std::invalid_argument& e) {
                     std::cerr << "Invalid argument: " << e.what() << '\n';
                 } catch (std::out_of_range& e) {
                     std::cerr << "Out of range: " << e.what() << '\n';
                 }
-            } else {
-                std::cerr << "Invalid input format\n";
-            }
+            // int splitIndex = message.find(' ');
+            // if (splitIndex != std::string::npos) {
+            //     std::string choice_str = message.substr(0, splitIndex);
+            //     std::string url = message.substr(splitIndex+1);
+
+            //     try {
+            //         int choice = std::stoi(choice_str);
+            //         bloomFilter->execute(choice, url);
+            //     } catch (std::invalid_argument& e) {
+            //         std::cerr << "Invalid argument: " << e.what() << '\n';
+            //     } catch (std::out_of_range& e) {
+            //         std::cerr << "Out of range: " << e.what() << '\n';
+            //     }
+            // } else {
+            //     std::cerr << "Invalid input format\n";
+            // } 
+            
+
         }
 
         read_bytes = recv(client_sock, buffer, expected_data_len, 0);
@@ -109,6 +123,7 @@ int main()
     memset(&sin,0, sizeof(sin));
     sin.sin_family = AF_INET;
     sin.sin_addr.s_addr = INADDR_ANY;
+    std::vector<std::thread> client_threads; // Declare client_threads here
     sin.sin_port = htons(server_port);
     if (bind(sock,(struct sockaddr*)&sin,sizeof(sin)) < 0)
     {
@@ -144,8 +159,13 @@ int main()
         }
         cout << "Client connected" << endl;
 
-        handle_client(client_sock, std::ref(bloomFilter));
-        client_thread.detach();
+        client_threads.push_back(std::thread(handle_client, client_sock, std::ref(bloomFilter)));
+    }
+    // Join all client threads before shutting down
+    for (auto& t : client_threads) {
+        if (t.joinable()) {
+            t.join();
+        }
     }
     
     close(sock);

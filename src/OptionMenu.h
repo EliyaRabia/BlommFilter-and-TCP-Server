@@ -14,7 +14,7 @@ class OptionMenu : public IMenu {
 
     public :
         OptionMenu();
-        void runMenu();
+        void runMenu(string userInput);
         int getChoice();
         string getUserUrl();
         bool checkStringFun(string s);

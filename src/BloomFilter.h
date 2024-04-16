@@ -31,11 +31,11 @@ public:
 // public:
 //     BloomFilter();
 
-    int execute(int choice, const std::string url);
-    bool checkIfUrlExist(std::string newUrl);
-    long int doHash(int digit, std::string s);
-    bool pushToArray(std::string url);
-    int checking2(std::string url);
+    int execute(int choice, const std::string url,int fis);
+    // bool checkIfUrlExist(std::string newUrl);
+    // long int doHash(int digit, std::string s);
+    // bool pushToArray(std::string url);
+    // int checking2(std::string url);
 
     std::vector<std::string> getStringVector();
     int getArraySize();
