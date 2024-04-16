@@ -14,9 +14,10 @@ class BloomFilter {
     int hash2;
     bool result;
     int* bloomFilter;
+    int hashTimes;
 
 public:
-    BloomFilter(int size, int hash1, int hash2);
+    BloomFilter(int size, int hash1, int hash2, int hashTimes);
     ~BloomFilter();
 
 // class BloomFilter {

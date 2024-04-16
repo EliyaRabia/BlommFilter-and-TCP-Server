@@ -5,11 +5,12 @@
 
 using namespace std;
 
-BloomFilter::BloomFilter(int size, int hash1 , int hash2) : result(false) {
+BloomFilter::BloomFilter(int size, int hash1 , int hash2 , int hashTimes) : result(false) {
     bloomFilter = new int[size]; // Allocate memory for bloomFilter
     cout << "BloomFilter created with size: " << size << endl;
     cout << "Hash1: " << hash1 << endl;
     cout << "Hash2: " << hash2 << endl;
+    cout << "HashTimes: " << hashTimes << endl;
     cout << "before for" << endl;
     for(int i = 0; i < size; i++) {
         bloomFilter[i] = 0;
@@ -18,6 +19,7 @@ BloomFilter::BloomFilter(int size, int hash1 , int hash2) : result(false) {
     arraySize = size;
     this->hash1 = hash1;
     this->hash2 = hash2;
+    this->hashTimes = hashTimes;
 }
 
 BloomFilter::~BloomFilter() {

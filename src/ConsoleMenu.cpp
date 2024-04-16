@@ -110,16 +110,16 @@ this class runs the first menu of the task, when the user chooses his arr size ,
         /*
         this method gets the first input from the user, and initialize the variables.
         */
-        void ConsoleMenu::runMenu(){
+        void ConsoleMenu::runMenu(string userInput){
             int splitIndex2;
-            string userInput;
-            getline(cin, userInput);
-            //get a valid input.
-            while (firstInputCheck(userInput) == 0) {
-                getline(cin, userInput);
-            } 
-            // we will clear the input buffer
-            cin.clear();
+            //string userInput;
+            // getline(cin, userInput);
+            // //get a valid input.
+            // while (firstInputCheck(userInput) == 0) {
+            //     getline(cin, userInput);
+            // } 
+            // // we will clear the input buffer
+            // cin.clear();
 
             //this is the right input and it indicates 1 2 or 3 where 1 is one function with 1 as value, 2 is one function with 2 as value, and three is 2 functions with both 1 and 2 as values.
             firstInputSize = firstInputCheck(userInput); 

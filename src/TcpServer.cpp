@@ -7,6 +7,7 @@
 #include <string.h>
 #include <thread>
 #include "BloomFilter.h"
+#include "ConsoleMenu.h"
 
 using namespace std;
 
@@ -26,16 +27,18 @@ void initialize_client(int client_sock, BloomFilter*& bloomFilter){
         size_t newline_pos = buffer_str.find('\n');
         if (newline_pos != std::string::npos) {
             std::string message = buffer_str.substr(0, newline_pos);
+            cout << "Received message: " << message << '\n';
             buffer_str = buffer_str.substr(newline_pos + 1);
-
-            int splitIndex1 = message.find(' ');
-            std::string size = message.substr(0, splitIndex1);
-            std::string rest = message.substr(splitIndex1+1);
-            int splitIndex2 = rest.find(' ');
-            std::string hash1 = rest.substr(0, splitIndex2);
-            std::string hash2 = rest.substr(splitIndex2+1);
+            ConsoleMenu consoleMenu = ConsoleMenu();
+            consoleMenu.runMenu(message);
+            //int splitIndex1 = message.find(' ');
+            int size = consoleMenu.getArraySize();
+            int hashTimes = consoleMenu.getHashTimes();
+            //int splitIndex2 = rest.find(' ');
+            int hash1 = consoleMenu.getHash1();
+            int hash2 = consoleMenu.getHash2();
             try {
-                bloomFilter = new BloomFilter(std::stoi(size), std::stoi(hash1), std::stoi(hash2));
+                bloomFilter = new BloomFilter(size,hash1,hash2,hashTimes);
                 cout << "Bloom filter initialized with size " << size << " and hash functions " << hash1 << " and " << hash2 << '\n';
             } catch (std::invalid_argument& e) {
                 cout << "Invalid argument: " << e.what() << '\n';
