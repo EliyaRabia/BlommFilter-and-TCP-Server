@@ -7,7 +7,7 @@
 
 using namespace std;
 
-BloomFilter::BloomFilter(int size, int hash1 , int hash2 , int hashTimes) : result(false) {
+BloomFilter::BloomFilter(int size, int hash1 , int hash2 , int hashTimes) : result(0) {
     bloomFilter = new int[size]; // Allocate memory for bloomFilter
     cout << "BloomFilter created with size: " << size << endl;
     cout << "Hash1: " << hash1 << endl;
@@ -43,6 +43,7 @@ int BloomFilter::execute(int choice, const std::string url,int fis) {
     else{
         this->result = op2.execute(this->bloomFilter,url,this->stringVector);
     }
+    cout<<"this is the result: "<< this->result<<endl; 
     return this->result;
 }
 
