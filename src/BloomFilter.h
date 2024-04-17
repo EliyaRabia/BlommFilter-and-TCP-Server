@@ -12,7 +12,7 @@ class BloomFilter {
     int arraySize;
     int hash1;
     int hash2;
-    bool result;
+    int result;
     int* bloomFilter;
     int hashTimes;
 
