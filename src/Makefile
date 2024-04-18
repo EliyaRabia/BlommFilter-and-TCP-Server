@@ -3,7 +3,7 @@ CXXFLAGS=-std=c++11 -pthread
 
 SOURCES=TcpServer.cpp BloomFilter.cpp ConsoleMenu.cpp OptionMenu.cpp Options.cpp Option1.cpp Option2.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
-EXECUTABLE=TcpServer
+EXECUTABLE=ex4
 
 all: $(SOURCES) $(EXECUTABLE)
 
