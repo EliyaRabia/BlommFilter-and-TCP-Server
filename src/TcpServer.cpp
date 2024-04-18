@@ -77,14 +77,19 @@ void handle_client(int client_sock, BloomFilter* bloomFilter) {
             OptionMenu optionMenu = OptionMenu();
             optionMenu.runMenu(message);
             try {
-                    int choice = optionMenu.getChoice();
-                    std::string url = optionMenu.getUserUrl(); 
-                    bloomFilter->execute(choice,url,fis); 
-                } catch (std::invalid_argument& e) {
-                    std::cerr << "Invalid argument: " << e.what() << '\n';
-                } catch (std::out_of_range& e) {
-                    std::cerr << "Out of range: " << e.what() << '\n';
-                }
+                int choice = optionMenu.getChoice();
+                std::string url = optionMenu.getUserUrl(); 
+                int result = bloomFilter->execute(choice, url, fis);
+                std::string response = std::to_string(result);
+
+                // Send the response back to the client
+                send(client_sock, response.c_str(), response.size(), 0);
+
+            } catch (std::invalid_argument& e) {
+                std::cerr << "Invalid argument: " << e.what() << '\n';
+            } catch (std::out_of_range& e) {
+                std::cerr << "Out of range: " << e.what() << '\n';
+            }
             // int splitIndex = message.find(' ');
             // if (splitIndex != std::string::npos) {
             //     std::string choice_str = message.substr(0, splitIndex);
