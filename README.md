@@ -1,3 +1,4 @@
+this branch is for step 1 of the project, if you want to see step 4 go to the part4 branch.
 # ex1
 # Compile and run
 - download ex1 folder and extract it
