@@ -152,11 +152,8 @@ int main()
     while (true){
         cout << "Waiting for client to connect" << endl;
         struct sockaddr_in client_sin;
-        cout << "hey1" << endl;
         unsigned int addr_len = sizeof(client_sin);
-        cout << "hey2" << endl;
         int client_sock = accept(sock,(struct sockaddr*)&client_sin,&addr_len);
-        cout << "hey3" << endl;
         if (client_sock < 0)
         {
             perror("error accepting client");
