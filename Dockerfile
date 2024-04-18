@@ -5,6 +5,6 @@ WORKDIR /usr/src/ex1
 
 COPY ./src/ .
 
-RUN g++ -o ex1 ./Main.cpp ./App.cpp ./ConsoleMenu.cpp ./OptionMenu.cpp ./Options.cpp ./Option1.cpp ./Option2.cpp
+RUN g++ -std=c++11 -pthread TcpServer.cpp BloomFilter.cpp ConsoleMenu.cpp OptionMenu.cpp Options.cpp Option1.cpp Option2.cpp -o ex4
 
-CMD ["./ex1"] 
+CMD ["./ex4"] 
