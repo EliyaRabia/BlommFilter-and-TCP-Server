@@ -31,9 +31,11 @@ Also the urls which will enter into the bloom filter are written in the env file
 
 *there is a link up there* 
 
-## Developed by:
+## Developed by: 
+Ofek Yemini 
+
 Eliya Rabia 
 
 Or Shmuel
 
-Ofek Yemini
+
