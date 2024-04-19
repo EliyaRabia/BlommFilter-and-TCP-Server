@@ -25,7 +25,7 @@ and those videos show what each app can do. We recommend you to watch those vide
 *The Facebook Android App*: https://www.youtube.com/watch?v=onclwdYc8EU 
 
 ## And That's it, Enjoy!
-Written by: 
+Written & Developed by: 
 
 Ofek Yemini
 
