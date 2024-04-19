@@ -1,4 +1,7 @@
-# ex4 - Bloom Filter and Tcp Server - BIU Advanced Programming Course
+# ex4 - Bloom Filter and Tcp Server - BIU Advanced Programming Course 
+
+The Wiki of the project is in this repository. 
+
 ### The Tcp BloomFilter
 In this program you can see our bloomfilter and our tcp server, the bloom filter and the tcp server were developed in cpp for our part 4 of the project in advanced programming course in BIU. 
 
@@ -37,8 +40,11 @@ the node js server is connected to a facebook website and an android app, if som
 If you want to read more about node js server or the website and app, please enter their repos and read their ReadMe files.
 
 ## Developed by:
+
+Ofek Yemini  
+
 Eliya Rabia 
 
 Or Shmuel
 
-Ofek Yemini
+
