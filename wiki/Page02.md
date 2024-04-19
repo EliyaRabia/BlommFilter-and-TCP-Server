@@ -48,7 +48,7 @@ after you have done that make sure your tcp server is already running and contin
 
 also u can find your ip in linux running the command ifconfig
 
-![alt text](pics/page2/iplinux.png)
+![alt text](pics/page2/ipconfig.png)
 
 
 ## Run The Server
