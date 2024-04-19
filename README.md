@@ -1,4 +1,7 @@
-# ex4 - Bloom Filter and Tcp Server - BIU Advanced Programming Course
+# ex4 - Bloom Filter and Tcp Server - BIU Advanced Programming Course 
+
+The Wiki of the project is in this repository. 
+
 ### The Tcp BloomFilter
 In this program you can see our bloomfilter and our tcp server, the bloom filter and the tcp server were developed in cpp for our part 4 of the project in advanced programming course in BIU. 
 
