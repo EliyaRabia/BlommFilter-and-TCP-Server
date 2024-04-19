@@ -14,7 +14,9 @@ The Tcp server, is a server that is written in cpp and its target is to comunnic
 the node js server is used for our facebook website and android app, you can see more about it in here: 
 
 *The node js server* : https://github.com/orshmuel9/FacebookServer/tree/part4
+
 *The website* : https://github.com/orshmuel9/facebook/tree/part4
+
 *The android app* :  https://github.com/EliyaRabia/AndroidFacebook/tree/part4
 
 ### Compile and run the bloom filter and the tcp server
