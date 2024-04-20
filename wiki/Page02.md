@@ -37,7 +37,7 @@ If you want to decide what will be the size , hash functions and urls of the blo
 
 you have some urls that will be inserted into the bloom filter (in CONNECTION_URL), and you also have its size and number of hash functions that are working on the insertion(in INITIALIZATION). 
 
-If you want to add some urls change the env file in CONNECTION_URL, each url should be like the regex of url, meaning that it must start with *http://* or *https://* and it also must contain at least one more letter after it (look at those 6 examples that you already have there). also notice that each url is seperated by ','. 
+If you want to add some urls change the env file in CONNECTION_URL,Each URL need to be by our regax that means: this regular expression will match any string that starts with "http" or "https", followed by "://", followed by one or more non-whitespace characters. (look at those 6 examples that you already have there. also notice that each url is seperated by ',').  
 
 You also need to make the tcp server work on your computer you need to put the ip of your computer that the tcp server is running on,
 (if you use a vmware virtual machine, you need to take its ip).
