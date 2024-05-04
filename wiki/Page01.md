@@ -30,6 +30,18 @@ open the terminal and run these:
 - ./ex4
 - now the server and the bloom filter are running!
 
+### Use the Docker to run 
+There is also an option to run it with Docker: 
+- enter the terminal in the folder of this repo (or in vscode terminal).
+- run the following commands:
+- sudo docker build -t ex4 .
+- sudo docker run -it -p 5555:5555 ex4
+- now the server and the bloom filter are running!
+- there maybe a case when you try to run the server in second time and you will get an error from the run command,
+in this case just do this command:
+- sudo systemctl restart docker
+- and then try to run again and it will work!.
+
 ## Some remarks 
 
 We suggest you to also read the readMe file in the repository! 

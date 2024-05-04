@@ -48,7 +48,9 @@ after you have done that make sure your tcp server is already running and contin
 
 also u can find your ip in linux running the command ifconfig
 
-![alt text](pics/page2/ipconfig.png)
+![alt text](pics/page2/ipconfig.png) 
+
+you can also see there in the env file the section "PORT_BLOOM=5555" this is the Tcp server port.
 
 
 ## Run The Server
